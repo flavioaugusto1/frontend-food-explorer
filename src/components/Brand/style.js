@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
 
   > h1 {
-    font-size: clamp(3.8rem, 3.694rem + 0.34vw, 3.8rem);
+    font-size: clamp(2.5rem, 2.067rem + 1.926vw, 3.8rem);
     font-weight: 700;
     font-family: "Roboto", sans-serif;
 
