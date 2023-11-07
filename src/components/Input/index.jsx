@@ -3,12 +3,9 @@ import { Container } from "./style";
 export function Input({ title, placeholder, type }) {
   return (
     <Container>
-      <p>
-        {title}
-      </p>
+      <p>{title}</p>
 
-      <input type={type} placeholder={placeholder}/>
-        
+      <input type={type} placeholder={placeholder} />
     </Container>
   );
 }

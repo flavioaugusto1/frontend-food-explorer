@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { Receipt } from "@phosphor-icons/react";
+
 export const Container = styled.button`
   padding: 1.2rem 3.2rem;
 
@@ -19,4 +21,10 @@ export const Container = styled.button`
   border: none;
 
   cursor: pointer;
+`;
+
+export const ReceiptIcon = styled(Receipt).attrs(({ theme }) => ({
+  size: 32,
+  color: theme.COLORS.LIGHT_100,
+}))`
 `;

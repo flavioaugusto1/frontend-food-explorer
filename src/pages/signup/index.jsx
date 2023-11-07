@@ -8,7 +8,7 @@ import { ButtonText } from "../../components/ButtonText";
 export function SignUp() {
   return (
     <Container>
-      <Brand />
+      <Brand size={47}/>
       <section>
         <h1>Crie sua conta</h1>
         <form>

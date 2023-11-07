@@ -6,7 +6,7 @@ export const Container = styled.div`
   align-items: center;
 
   > h1 {
-    font-size: clamp(2rem, 1.371rem + 2.143vw, 4.2rem);
+    font-size: clamp(2rem, 1.229rem + 3.857vw, 4.7rem);
     font-weight: 700;
     font-family: "Roboto", sans-serif;
 
@@ -14,5 +14,4 @@ export const Container = styled.div`
 
     margin-left: 1rem;
   }
-
 `;
