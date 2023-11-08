@@ -20,11 +20,13 @@ export const Container = styled.button`
   border-radius: 5px;
   border: none;
 
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+    background-color: ${({ theme }) => theme.COLORS.TOMATO_200};
+  }
 `;
 
 export const ReceiptIcon = styled(Receipt).attrs(({ theme }) => ({
   size: 32,
   color: theme.COLORS.LIGHT_100,
-}))`
-`;
+}))``;

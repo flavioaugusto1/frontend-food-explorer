@@ -22,6 +22,28 @@ export const Container = styled.header`
     display: none;
   }
 
+  #receipt {
+    position: relative;
+
+
+    > span {
+      position: absolute;
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+      background-color: ${({ theme }) => theme.COLORS.TOMATO_100};
+
+      font-size: 1.4rem;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      line-height: 2.4rem;
+
+      padding: .1rem .5rem;
+      border-radius: 50%;
+
+      top: -.6rem;
+      right: -.5rem;
+    }
+  }
+
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     display: flex;
     align-items: center;
@@ -31,6 +53,10 @@ export const Container = styled.header`
       h1 {
         font-size: 24px;
       }
+    }
+
+    #receipt{
+      display: none;
     }
 
     #input,
@@ -60,7 +86,7 @@ export const Container = styled.header`
 `;
 
 export const ListIcon = styled(List).attrs(({ theme }) => ({
-  size: 32,
+  size: 30,
   color: theme.COLORS.LIGHT_100,
 }))`
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -69,7 +95,7 @@ export const ListIcon = styled(List).attrs(({ theme }) => ({
 `;
 
 export const ReceiptIcon = styled(Receipt).attrs(({ theme }) => ({
-  size: 32,
+  size: 30,
   color: theme.COLORS.LIGHT_100,
 }))`
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -78,6 +104,10 @@ export const ReceiptIcon = styled(Receipt).attrs(({ theme }) => ({
 `;
 
 export const SignOutIcon = styled(SignOut).attrs(({ theme }) => ({
-  size: 32,
+  size: 30,
   color: theme.COLORS.LIGHT_100,
-}))``;
+}))`
+  &:hover {
+    cursor: pointer;
+  }
+`;

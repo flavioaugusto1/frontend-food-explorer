@@ -9,7 +9,10 @@ export function Header() {
     <Container>
       <ListIcon />
       <Brand />
-      <ReceiptIcon />
+      <div id="receipt">
+        <span>0</span>
+        <ReceiptIcon />
+      </div>
 
       <div id="input">
         <Input placeholder="Busque por pratos ou ingredientes" />
