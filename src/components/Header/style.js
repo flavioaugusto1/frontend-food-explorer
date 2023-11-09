@@ -24,7 +24,7 @@ export const Container = styled.header`
 
   #receipt {
     position: relative;
-
+    cursor: pointer;
 
     > span {
       position: absolute;
@@ -36,11 +36,11 @@ export const Container = styled.header`
       font-weight: 500;
       line-height: 2.4rem;
 
-      padding: .1rem .5rem;
+      padding: 0.1rem 0.5rem;
       border-radius: 50%;
 
-      top: -.6rem;
-      right: -.5rem;
+      top: -0.6rem;
+      right: -0.5rem;
     }
   }
 
@@ -55,7 +55,7 @@ export const Container = styled.header`
       }
     }
 
-    #receipt{
+    #receipt {
       display: none;
     }
 
@@ -89,6 +89,8 @@ export const ListIcon = styled(List).attrs(({ theme }) => ({
   size: 30,
   color: theme.COLORS.LIGHT_100,
 }))`
+  cursor: pointer;
+
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     display: none;
   }
@@ -107,7 +109,5 @@ export const SignOutIcon = styled(SignOut).attrs(({ theme }) => ({
   size: 30,
   color: theme.COLORS.LIGHT_100,
 }))`
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;

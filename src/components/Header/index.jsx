@@ -4,13 +4,13 @@ import { Brand } from "../Brand";
 import { Input } from "../Input";
 import { Button } from "../Button";
 
-export function Header() {
+export function Header({ receipts }) {
   return (
     <Container>
       <ListIcon />
       <Brand />
       <div id="receipt">
-        <span>0</span>
+        <span>{receipts}</span>
         <ReceiptIcon />
       </div>
 

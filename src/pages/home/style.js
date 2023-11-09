@@ -8,64 +8,101 @@ export const Container = styled.div`
   justify-items: center;
 
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr 1fr 1fr 1fr auto;
+  grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "header"
-    "wrap"
-    "meals"
-    "main_dishes"
-    "dessert"
+    "content"
     "footer";
 
-  #wrap {
-    grid: "wrap";
-    padding: 1.6rem;
-    position: relative;
+  #content {
+    padding: 2rem;
 
-    #infos {
-      height: 12rem;
-      margin-top: 4.4rem;
+    #wrap {
+      grid: "wrap";
+      position: relative;
 
-      background-color: ${({ theme }) => theme.COLORS.DARK_900};
-      color: ${({ theme }) => theme.COLORS.LIGHT_300};
+      #infos {
+        position: relative;
+        margin-top: 4.4rem;
 
-      border-radius: 0.3rem;
+        background-color: ${({ theme }) => theme.COLORS.DARK_900};
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+        border-radius: 0.3rem;
 
-      > img {
-        margin-bottom: 2.6rem;
-      }
+        display: grid;
+        grid-template-columns: 15rem auto;
+        align-items: center;
 
-      > div {
-        h2 {
-          font-size: 1.8rem;
-          font-family: "Poppins", sans-serif;
-          font-weight: 600;
-          line-height: 2.5rem;
+        > img {
+          width: clamp(2rem, -48.302rem + 251.009vw, 19rem);
+          position: absolute;
+          margin-bottom: 3rem;
+          left: -2rem;
         }
 
-        p {
-          font-size: 1.2rem;
-          font-family: "Poppins", sans-serif;
-          font-weight: 400;
-          line-height: 1.6rem;
+        &::before {
+          content: "";
+          width: 10rem;
+          height: 12rem;
+        }
+
+        #texts {
+          padding: 1rem;
+
+          h2 {
+            font-size: 1.8rem;
+            font-family: "Poppins", sans-serif;
+            font-weight: 600;
+            line-height: 2.5rem;
+          }
+
+          p {
+            font-size: 1.2rem;
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+            line-height: 1.6rem;
+          }
         }
       }
     }
-  }
 
-  #meals {
-    grid-area: "meals";
-  }
+    #meals,
+    #main_dishes,
+    #dessert {
+      > h2 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 500;
+        line-height: 2.5rem;
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
 
-  #main_dishes {
-    grid-area: "main_dishes";
-  }
+        margin-bottom: 2.4rem;
+      }
+    }
 
-  #dessert {
-    grid-area: "dessert";
+    #meals,
+    #main_dishes,
+    #dessert {
+      margin-bottom: 2.4rem;
+      .dishes {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+      }
+    }
+
+    #meals {
+      grid-area: "meals";
+      margin-top: 6.2rem;
+    }
+
+    #main_dishes {
+      grid-area: "main_dishes";
+    }
+
+    #dessert {
+      grid-area: "dessert";
+    }
   }
 `;
