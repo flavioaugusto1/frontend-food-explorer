@@ -85,9 +85,11 @@ export const Container = styled.div`
     #main_dishes,
     #dessert {
       margin-bottom: 2.4rem;
+      width: 50rem;
       .dishes {
         display: flex;
         align-items: center;
+        flex-direction: row;
         gap: 1.2rem;
       }
     }

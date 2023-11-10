@@ -20,7 +20,7 @@ export function Header({ receipts }) {
 
       <div id="wrapButton">
         <div id="button">
-          <Button name={`Pedidos(0)`} icon />
+          <Button name={`Pedidos (${receipts})`} icon />
         </div>
 
         <div id="signout">

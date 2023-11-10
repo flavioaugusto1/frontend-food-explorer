@@ -1,5 +1,13 @@
 import { Container } from "./style";
 
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+
+import "@splidejs/react-splide/css/skyblue";
+import "@splidejs/react-splide/css/sea-green";
+
+import "@splidejs/react-splide/css/core";
+
 import Fruits from "../../assets/fruits.png";
 
 import { Header } from "../../components/Header";
@@ -8,11 +16,14 @@ import { Footer } from "../../components/Footer";
 import { useState } from "react";
 
 export function Home() {
+  const [slide, setSlide] = useState([
+    1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+  ]);
   const [items, setItems] = useState(1);
   const [receipt, setReceipt] = useState(0);
 
   function handleReceipt() {
-    setReceipt(prevState => prevState + items)
+    setReceipt((prevState) => prevState + items);
   }
   function handleItems() {
     setItems((prevState) => prevState + 1);
@@ -34,37 +45,71 @@ export function Home() {
 
         <section id="meals">
           <h2>Refeições</h2>
-          <div className="dishes">
-            <CardFood
-              title="Salada Ravanello"
-              price={`R$ 49,97`}
-              numberOfDishes="01"
-            />
-          </div>
+          <Splide
+            className="dishes"
+            options={{
+              fixedWidth: 200,
+              gap: "6rem",
+              pagination: false,
+              arrows: false,
+            }}
+          >
+            {slide.map((slide) => (
+              <SplideSlide key={slide.src}>
+                <CardFood
+                  title="Salada Ravanello"
+                  price={`R$ 49,97`}
+                  numberOfDishes="01"
+                />
+              </SplideSlide>
+            ))}
+          </Splide>
         </section>
 
         <section id="main_dishes">
-          <h2>Pratos Principais</h2>
-          <div className="dishes">
-            <CardFood
-              title="Salada Ravanello"
-              price={`R$ 49,97`}
-              numberOfDishes={items}
-              onAddItems={handleItems}
-              addReceiptItems={handleReceipt}
-            />
-          </div>
+          <h2>Pratos principais</h2>
+          <Splide
+            className="dishes"
+            options={{
+              fixedWidth: 200,
+              gap: "6rem",
+              pagination: false,
+              arrows: false,
+            }}
+          >
+            {slide.map((slide) => (
+              <SplideSlide key={slide.src}>
+                <CardFood
+                  title="Salada Ravanello"
+                  price={`R$ 49,97`}
+                  numberOfDishes="01"
+                />
+              </SplideSlide>
+            ))}
+          </Splide>
         </section>
 
         <section id="dessert">
           <h2>Sobremesas</h2>
-          <div className="dishes">
-            <CardFood
-              title="Salada Ravanello"
-              price={`R$ 49,97`}
-              numberOfDishes="01"
-            />
-          </div>
+          <Splide
+            className="dishes"
+            options={{
+              fixedWidth: 200,
+              gap: "6rem",
+              pagination: false,
+              arrows: false,
+            }}
+          >
+            {slide.map((slide) => (
+              <SplideSlide key={slide.src}>
+                <CardFood
+                  title="Salada Ravanello"
+                  price={`R$ 49,97`}
+                  numberOfDishes="01"
+                />
+              </SplideSlide>
+            ))}
+          </Splide>
         </section>
       </div>
 
