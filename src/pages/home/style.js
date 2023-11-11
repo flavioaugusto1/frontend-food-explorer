@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 100vh;
-
+  /* height: 100vh; */
+  position: relative;
   display: grid;
   align-items: center;
   justify-items: center;
@@ -15,12 +15,8 @@ export const Container = styled.div`
     "footer";
 
   #content {
-    padding: 2rem;
-
     #wrap {
-      grid: "wrap";
-      position: relative;
-
+      padding: 2rem;
       #infos {
         position: relative;
         margin-top: 4.4rem;
@@ -70,6 +66,10 @@ export const Container = styled.div`
     #meals,
     #main_dishes,
     #dessert {
+      margin-bottom: 2.4rem;
+      max-width: 50rem;
+      padding: 2rem;
+
       > h2 {
         font-family: "Poppins", sans-serif;
         font-size: 1.8rem;
@@ -79,32 +79,20 @@ export const Container = styled.div`
 
         margin-bottom: 2.4rem;
       }
-    }
 
-    #meals,
-    #main_dishes,
-    #dessert {
-      margin-bottom: 2.4rem;
-      width: 50rem;
       .dishes {
         display: flex;
         align-items: center;
         flex-direction: row;
         gap: 1.2rem;
       }
+      .splide {
+        padding: 0;
+      }
     }
 
     #meals {
-      grid-area: "meals";
       margin-top: 6.2rem;
-    }
-
-    #main_dishes {
-      grid-area: "main_dishes";
-    }
-
-    #dessert {
-      grid-area: "dessert";
     }
   }
 `;

@@ -1,6 +1,6 @@
 import { Container } from "./style";
 
-import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
 import "@splidejs/react-splide/css/skyblue";
@@ -11,6 +11,7 @@ import "@splidejs/react-splide/css/core";
 import Fruits from "../../assets/fruits.png";
 
 import { Header } from "../../components/Header";
+import { SideMenu } from "../../components/SideMenu"
 import { CardFood } from "../../components/CardFood";
 import { Footer } from "../../components/Footer";
 import { useState } from "react";
@@ -32,6 +33,7 @@ export function Home() {
   return (
     <Container>
       <Header receipts={receipt} />
+      <SideMenu />
       <div id="content">
         <div id="wrap">
           <section id="infos">
@@ -49,7 +51,7 @@ export function Home() {
             className="dishes"
             options={{
               fixedWidth: 200,
-              gap: "6rem",
+              gap: "1rem",
               pagination: false,
               arrows: false,
             }}
@@ -72,7 +74,7 @@ export function Home() {
             className="dishes"
             options={{
               fixedWidth: 200,
-              gap: "6rem",
+              gap: "1rem",
               pagination: false,
               arrows: false,
             }}
@@ -95,7 +97,7 @@ export function Home() {
             className="dishes"
             options={{
               fixedWidth: 200,
-              gap: "6rem",
+              gap: "1rem",
               pagination: false,
               arrows: false,
             }}

@@ -5,7 +5,7 @@ import { Plus, Minus, HeartStraight } from "@phosphor-icons/react";
 export const Container = styled.div`
   position: relative;
 
-  width: 21rem;
+  width: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
