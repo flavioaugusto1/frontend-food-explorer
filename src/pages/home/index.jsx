@@ -11,7 +11,7 @@ import "@splidejs/react-splide/css/core";
 import Fruits from "../../assets/fruits.png";
 
 import { Header } from "../../components/Header";
-import { SideMenu } from "../../components/SideMenu"
+import { SideMenu } from "../../components/SideMenu";
 import { CardFood } from "../../components/CardFood";
 import { Footer } from "../../components/Footer";
 import { useState } from "react";
@@ -22,18 +22,13 @@ export function Home() {
   ]);
   const [items, setItems] = useState(1);
   const [receipt, setReceipt] = useState(0);
-
-  function handleReceipt() {
-    setReceipt((prevState) => prevState + items);
-  }
-  function handleItems() {
-    setItems((prevState) => prevState + 1);
-  }
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   return (
     <Container>
-      <Header receipts={receipt} />
-      <SideMenu />
+      <Header receipts={receipt} onOpenMenu={() => setMenuIsOpen(true)} />
+      <SideMenu menuIsOpen={menuIsOpen} onCloseMenu={() => setMenuIsOpen(false)}/>
+
       <div id="content">
         <div id="wrap">
           <section id="infos">

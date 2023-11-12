@@ -1,18 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  /* height: 100vh; */
+  height: 100%;
   position: relative;
   display: grid;
   align-items: center;
   justify-items: center;
-
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-    "header"
-    "content"
-    "footer";
 
   #content {
     #wrap {
@@ -67,8 +60,8 @@ export const Container = styled.div`
     #main_dishes,
     #dessert {
       margin-bottom: 2.4rem;
-      max-width: 50rem;
-      padding: 2rem;
+      max-width: 48rem;
+      padding: 1.6rem;
 
       > h2 {
         font-family: "Poppins", sans-serif;

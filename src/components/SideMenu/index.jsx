@@ -1,23 +1,42 @@
-import { Container, Header, Content, CloseIcon } from "./style";
+import {
+  Container,
+  Header,
+  Content,
+  CloseIcon,
+  SearchIcon,
+  MenuList,
+} from "./style";
 
 import { Input } from "../Input";
+import { ButtonText } from "../ButtonText";
+import { Footer } from "../Footer";
+import { useState } from "react";
 
-export function SideMenu() {
+export function SideMenu({ menuIsOpen, onCloseMenu }) {
   return (
-    <Container>
+    <Container data-menu-is-open={menuIsOpen}>
       <Header>
-        <CloseIcon />
+        <CloseIcon onClick={onCloseMenu} />
         <h1>Menu</h1>
       </Header>
 
       <Content>
         <div id="search">
-          <Input
-            type="text"
-            placeholder="Busque por pratos ou ingredientes"
-          />
+          <SearchIcon />
+          <Input type="text" placeholder="Busque por pratos ou ingredientes" />
         </div>
+
+        <MenuList>
+          <li>
+            <ButtonText title="Novo prato" />
+          </li>
+          <li>
+            <ButtonText title="Sair" />
+          </li>
+        </MenuList>
       </Content>
+
+      <Footer />
     </Container>
   );
 }

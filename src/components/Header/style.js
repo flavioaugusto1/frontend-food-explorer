@@ -11,7 +11,7 @@ export const Container = styled.header`
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   > div {
     font-size: clamp(2.1rem, 1.595rem + 2.45vw, 3.8rem);
@@ -23,6 +23,8 @@ export const Container = styled.header`
   }
 
   #receipt {
+    width: 10;
+
     position: relative;
     cursor: pointer;
 

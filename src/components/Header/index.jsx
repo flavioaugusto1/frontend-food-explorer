@@ -4,11 +4,13 @@ import { Brand } from "../Brand";
 import { Input } from "../Input";
 import { Button } from "../Button";
 
-export function Header({ receipts }) {
+export function Header({ receipts, onOpenMenu }) {
   return (
     <Container>
-      <ListIcon />
+      <ListIcon onClick={onOpenMenu} />
+
       <Brand />
+
       <div id="receipt">
         <span>{receipts}</span>
         <ReceiptIcon />
