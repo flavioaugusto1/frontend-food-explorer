@@ -23,72 +23,76 @@ export const Content = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
 
-  #backPage {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.6rem;
-
-    > a {
-      font-family: "Poppins", sans-serif;
-      font-size: 2.4rem;
-      line-height: 3.3rem;
-      font-weight: 500;
-      color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    }
-  }
-
-  #logo-product {
-    display: flex;
-    justify-content: center;
-  }
-
-  #description-product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2.4rem;
-
-    h1 {
-      font-family: "Poppins", sans-serif;
-      font-size: 2.7rem;
-      font-weight: 500;
-      line-height: 3.7rem;
-
-      margin-top: 1.6rem;
-
-      color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    }
-
-    p {
-      font-family: "Poppins", sans-serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      line-height: 2.2rem;
-
-      text-align: center;
-      color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    }
-
-    .ingredients {
+    #backPage {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
+      margin-bottom: 1.6rem;
 
-      margin-bottom: 4.8rem;
+      > a {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.4rem;
+        line-height: 3.3rem;
+        font-weight: 500;
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+      }
     }
-  }
 
-  #buttons {
-    margin-bottom: 4rem;
+    #logo-product {
+      display: flex;
+      justify-content: center;
+    }
 
-    
-    #addReceipt {
-      height: 1.2rem 1.6rem;
+    #description-product {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.4rem;
+
+      h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 2.7rem;
+        font-weight: 500;
+        line-height: 3.7rem;
+
+        margin-top: 1.6rem;
+
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+      }
+
+      p {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 2.2rem;
+
+        text-align: center;
+        color: ${({ theme }) => theme.COLORS.LIGHT_300};
+      }
+
+      .ingredients {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+
+        margin-bottom: 4.8rem;
+      }
+    }
+
+    #buttons {
+      margin-bottom: 4rem;
+
+      #addReceipt {
+        height: 1.2rem 1.6rem;
+        > svg {
+          width: 2.1rem;
+          height: 2.1rem;
+          margin-right: 0.5rem;
+        }
+      }
     }
   }
 `;

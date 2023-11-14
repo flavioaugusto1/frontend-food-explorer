@@ -1,16 +1,25 @@
+import { useState } from "react";
 import { Container, Content, BackButtonIcon } from "./style";
 import Dish from "../../assets/dish_264.png";
 
 import { Header } from "../../components/Header";
+import { SideMenu } from "../../components/SideMenu";
 import { ButtonText } from "../../components/ButtonText";
 import { Ingredients } from "../../components/Ingredients";
 import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
 
 export function Details() {
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+
   return (
     <Container>
-      <Header receipts="0" />
+      <Header receipts="0" onOpenMenu={() => setMenuIsOpen(true)} />
+      <SideMenu
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+      />
+
       <Content>
         <div id="wrap">
           <section id="backPage">

@@ -10,7 +10,6 @@ import {
 import { Input } from "../Input";
 import { ButtonText } from "../ButtonText";
 import { Footer } from "../Footer";
-import { useState } from "react";
 
 export function SideMenu({ menuIsOpen, onCloseMenu }) {
   return (
@@ -36,7 +35,6 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
         </MenuList>
       </Content>
 
-      <Footer />
     </Container>
   );
 }
