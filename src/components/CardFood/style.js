@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Plus, Minus, HeartStraight } from "@phosphor-icons/react";
+import { HeartStraight } from "@phosphor-icons/react";
 
 export const Container = styled.div`
   position: relative;
@@ -34,38 +34,9 @@ export const Container = styled.div`
     line-height: 1.6rem;
   }
 
-  #numberOfDishes {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.4rem;
-
-    > span {
-      font-family: "Roboto", sans-serif;
-      font-size: 1.6rem;
-      line-height: 1.6rem;
-      color: ${({ theme }) => theme.COLORS.LIGHT_300};
-    }
-  }
-
   button {
     padding: 0.4rem 5.9rem;
   }
-`;
-
-export const PlusIcon = styled(Plus).attrs(({ theme }) => ({
-  size: 24,
-  color: theme.COLORS.LIGHT_100,
-}))`
-  cursor: pointer;
-`;
-
-export const MinusIcon = styled(Minus).attrs(({ theme }) => ({
-  size: 24,
-  color: theme.COLORS.LIGHT_100,
-}))`
-  cursor: pointer;
 `;
 
 export const HeartIcon = styled(HeartStraight).attrs(({ theme }) => ({

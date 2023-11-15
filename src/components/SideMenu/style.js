@@ -14,7 +14,7 @@ export const Container = styled.aside`
   z-index: 1;
 
   transform: translateX(-200%);
-  transition: transform .5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 
   &[data-menu-is-open="true"] {
     transform: translateX(0);
@@ -26,7 +26,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   gap: 1.6rem;
-  padding: 6rem 2.8rem 2.8rem;
+  padding: 3rem 5.8rem 2.8rem;
 
   > h1 {
     font-family: "Roboto", sans-serif;

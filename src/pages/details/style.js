@@ -84,9 +84,14 @@ export const Content = styled.section`
 
     #buttons {
       margin-bottom: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
 
       #addReceipt {
-        height: 1.2rem 1.6rem;
+        width: 100%;
+        padding: .8rem 1.6rem;
         > svg {
           width: 2.1rem;
           height: 2.1rem;

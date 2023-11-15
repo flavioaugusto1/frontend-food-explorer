@@ -6,6 +6,7 @@ import { Header } from "../../components/Header";
 import { SideMenu } from "../../components/SideMenu";
 import { ButtonText } from "../../components/ButtonText";
 import { Ingredients } from "../../components/Ingredients";
+import { OrderDishes } from "../../components/OrderDishes";
 import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
 
@@ -48,6 +49,7 @@ export function Details() {
           </section>
 
           <div id="buttons">
+            <OrderDishes numberOfDishes="01" />
             <Button name={`pedir . R$ 25,00`} icon id="addReceipt" />
           </div>
         </div>
