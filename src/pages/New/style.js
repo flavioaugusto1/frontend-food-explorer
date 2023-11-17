@@ -22,7 +22,7 @@ export const Content = styled.main`
     font-size: 3.6rem;
     font-family: "Roboto", sans-serif;
     font-weight: 00;
-    
+
     margin: 2.4rem 0;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_100};
@@ -37,49 +37,46 @@ export const Content = styled.main`
       font-size: 1.6546rem;
     }
   }
+`;
 
-  > form {
-    label {
-      font-family: "Roboto", sans-serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      line-height: 1.6rem;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
 
-      color: ${({ theme }) => theme.COLORS.LIGHT_400};
-    }
+  label {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.6rem;
 
-    input {
-      margin: 1.6rem 0 2.4rem;
-      background-color: ${({ theme }) => theme.COLORS.DARK_800};
-    }
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
+    cursor: text;
+  }
 
-    .select {
-      margin-bottom: 2.4rem;
-    }
+  .ingredients {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 
-    #category {
-      display: flex;
-      flex-direction: column;
-      gap: 1.6rem;
-    }
+    padding: 0.8rem;
 
-    .ingredients {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex-wrap: wrap;
-      gap: 1rem;
+    background-color: ${({ theme }) => theme.COLORS.DARK_800};
+    border-radius: 8px;
 
-      margin-top: 2.4rem;
-      padding: 0.8rem;
-
-      background-color: ${({ theme }) => theme.COLORS.DARK_800};
-      border-radius: 8px;
+    > div {
+      > input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 `;
 
 export const BackButtonIcon = styled(CaretLeft).attrs(({ theme }) => ({
-  size: "3.2rem",
+  size: "2.8rem",
   color: theme.COLORS.LIGHT_100,
 }))``;

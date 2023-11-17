@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Content, BackButtonIcon } from "./style";
+import { Container, Content, Form, BackButtonIcon } from "./style";
 
 import { Header } from "../../components/Header";
 import { SideMenu } from "../../components/SideMenu";
@@ -7,6 +7,8 @@ import { ButtonText } from "../../components/ButtonText";
 import { Input } from "../../components/Input";
 import { SelectButton } from "../../components/SelectButton";
 import { IngredientItem } from "../../components/IngredientItem";
+import { TextArea } from "../../components/TextArea";
+import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
 
 export function New() {
@@ -27,7 +29,7 @@ export function New() {
 
         <h1>Novo prato</h1>
 
-        <form>
+        <Form>
           <label htmlFor="logo">Imagem do prato</label>
           <Input type="file" name="logo" id="logo" />
 
@@ -44,12 +46,21 @@ export function New() {
 
           <label htmlFor="ingredients">Ingredients</label>
           <div className="ingredients">
-            <IngredientItem name="Pimenta do reino" />
-            <IngredientItem name="Frango" />
-            <IngredientItem name="Sal" />
+            <IngredientItem value="Pimenta do reino" />
+            <IngredientItem value="Frango" />
+            <IngredientItem value="Sal" />
+
             <IngredientItem isNew name="Adicionar" />
           </div>
-        </form>
+
+          <label htmlFor="price">Preço</label>
+          <Input type="text" name="price" id="price" placeholder="R$ 00,00" />
+
+          <label htmlFor="description">Descrição</label>
+          <TextArea placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
+
+          <Button name="Salvar alterações" />
+        </Form>
       </Content>
 
       <Footer />

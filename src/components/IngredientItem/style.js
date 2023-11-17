@@ -17,14 +17,25 @@ export const Container = styled.div`
 
   > input {
     color: ${({ theme, isNew }) =>
-      isNew ? theme.COLORS.LIGHT_600 : theme.COLORS.LIGHT_500};
+      isNew ? theme.COLORS.LIGHT_600 : theme.COLORS.LIGHT_100};
     font-family: "Roboto", sans-serif;
+    background: transparent;
     font-size: 1.6rem;
     line-height: 1.6rem;
-
+    outline: none;
     border: none;
+  }
+
+  > button {
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 `;
 
-export const PlusIcon = styled(Plus).attrs({})``;
-export const CloseIcon = styled(X)``;
+export const PlusIcon = styled(Plus)`
+  color: ${({ theme }) => theme.COLORS.LIGHT_500};
+`;
+export const CloseIcon = styled(X)`
+  color: ${({ theme }) => theme.COLORS.LIGHT_100};
+`;

@@ -4,8 +4,6 @@ import * as SelectPrimitive from "@radix-ui/react-select";
 
 export const SelectTrigger = styled(SelectPrimitive.Trigger)`
   width: 100%;
-  margin-top: 1.6rem;
-  margin-bottom: 2.4rem;
   height: 4.8rem;
   background-color: ${({ theme }) => theme.COLORS.DARK_900};
 
@@ -46,25 +44,14 @@ export const SelectItem = styled(SelectPrimitive.Item)`
   line-height: 2.2rem;
 
   cursor: pointer;
+
+  &[data-highlighted] {
+    background-color: ${({ theme }) => theme.COLORS.DARK_600};
+    outline: none;
+
+    border-radius: 8px;
+  }
 `;
-
-//   .SelectContent {
-//     overflow: hidden;
-//     cursor: pointer;
-//     color: ${({ theme }) => theme.COLORS.LIGHT_400};
-//     background-color: ${({ theme }) => theme.COLORS.LIGHT_100};
-//     position: absolute;
-
-//     .SelectViewport {
-//       padding: 3rem;
-//     }
-
-//     .SelectItem {
-//       color: red;
-//       background-color: red;
-//     }
-//   }
-// `;
 
 export const IconDown = styled(CaretDown).attrs(({ theme }) => ({
   size: "2.4rem",
