@@ -1,38 +1,37 @@
 import * as Select from "@radix-ui/react-select";
-import { Container, IconDown, IconUp } from "./style";
+import {
+  SelectTrigger,
+  SelectViewport,
+  SelectContent,
+  SelectItem,
+  IconDown,
+} from "./style";
 
 export function SelectButton() {
   return (
-    <Container>
-      <Select.Root>
-        <Select.Trigger className="SelectTrigger">
-          <Select.Value placeholder="Selecione o ingrediente" />
-          <Select.Icon>
-            <IconDown />
-          </Select.Icon>
-        </Select.Trigger>
+    <Select.Root>
+      <SelectTrigger>
+        <Select.Value placeholder="Selecione a categoria" />
+        <Select.Icon>
+          <IconDown />
+        </Select.Icon>
+      </SelectTrigger>
 
-        <Select.Portal className="SelectPortal">
-          <Select.Content className="SelectContent">
-            <Select.ScrollUpButton className="SelectScrollButton ">
-              <IconUp />
-            </Select.ScrollUpButton>
-            <Select.Viewport className="SelectViewport">
-              <Select.Item value="refeição" className="SelectItem">
-                <Select.ItemText className="SelectItem">
-                  Refeição
-                </Select.ItemText>
-              </Select.Item>
-              <Select.Item value="prato_principal" className="SelectItem">
-                <Select.ItemText>Prato Principal</Select.ItemText>
-              </Select.Item>
-              <Select.Item value="sobremesa" className="SelectItem">
-                <Select.ItemText>Sobremesas</Select.ItemText>
-              </Select.Item>
-            </Select.Viewport>
-          </Select.Content>
-        </Select.Portal>
-      </Select.Root>
-    </Container>
+      <Select.Portal className="SelectPortal">
+        <SelectContent position="popper" sideOffset={2}>
+          <SelectViewport>
+            <SelectItem value="prato_principal">
+              <Select.ItemText className="SelectItem">Prato Principal</Select.ItemText>
+            </SelectItem>
+            <SelectItem value="sobremesa">
+              <Select.ItemText>Sobremesa</Select.ItemText>
+            </SelectItem>
+            <SelectItem value="bebidas">
+              <Select.ItemText>Bebidas</Select.ItemText>
+            </SelectItem>
+          </SelectViewport>
+        </SelectContent>
+      </Select.Portal>
+    </Select.Root>
   );
 }

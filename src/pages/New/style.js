@@ -18,12 +18,23 @@ export const Content = styled.main`
   height: 100%;
   padding: 1rem 3.2rem 5.3rem;
 
+  > h1 {
+    font-size: 3.6rem;
+    font-family: "Roboto", sans-serif;
+    font-weight: 00;
+    
+    margin: 2.4rem 0;
+
+    color: ${({ theme }) => theme.COLORS.LIGHT_100};
+  }
+
   #backPage {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
 
     > a {
-      font-size: 1.6rem;
+      font-size: 1.6546rem;
     }
   }
 
@@ -42,10 +53,28 @@ export const Content = styled.main`
       background-color: ${({ theme }) => theme.COLORS.DARK_800};
     }
 
+    .select {
+      margin-bottom: 2.4rem;
+    }
+
     #category {
       display: flex;
       flex-direction: column;
       gap: 1.6rem;
+    }
+
+    .ingredients {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      margin-top: 2.4rem;
+      padding: 0.8rem;
+
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
+      border-radius: 8px;
     }
   }
 `;
