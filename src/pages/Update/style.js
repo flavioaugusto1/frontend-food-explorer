@@ -66,12 +66,20 @@ export const Form = styled.form`
 
     background-color: ${({ theme }) => theme.COLORS.DARK_800};
     border-radius: 8px;
+  }
 
-    > div {
-      > input {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  .buttons {
+    display: flex;
+    align-items: center;
+    gap: 3.2rem;
+
+    > button {
+      flex: 1 1;
+    }
+    .buttonDelete {
+      background-color: ${({ theme }) => theme.COLORS.DARK_800};
+      &:hover {
+        background-color: ${({ theme }) => theme.COLORS.DARK_900};
       }
     }
   }

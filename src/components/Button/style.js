@@ -23,6 +23,7 @@ export const Container = styled.button`
   &:hover {
     cursor: pointer;
     background-color: ${({ theme }) => theme.COLORS.TOMATO_200};
+    transition: 0.6s;
   }
 `;
 
