@@ -27,7 +27,10 @@ export function Home() {
   return (
     <Container>
       <Header receipts={receipt} onOpenMenu={() => setMenuIsOpen(true)} />
-      <SideMenu menuIsOpen={menuIsOpen} onCloseMenu={() => setMenuIsOpen(false)}/>
+      <SideMenu
+        menuIsOpen={menuIsOpen}
+        onCloseMenu={() => setMenuIsOpen(false)}
+      />
 
       <div id="content">
         <div id="wrap">
@@ -48,7 +51,11 @@ export function Home() {
               fixedWidth: 200,
               gap: "1rem",
               pagination: false,
-              arrows: false,
+              breakpoints: {
+                1024: {
+                  arrows: false,
+                },
+              },
             }}
           >
             {slide.map((slide) => (
@@ -57,6 +64,7 @@ export function Home() {
                   title="Salada Ravanello"
                   price={`R$ 49,97`}
                   numberOfDishes="01"
+                  className="card-food"
                 />
               </SplideSlide>
             ))}
@@ -71,7 +79,11 @@ export function Home() {
               fixedWidth: 200,
               gap: "1rem",
               pagination: false,
-              arrows: false,
+              breakpoints: {
+                1024: {
+                  arrows: false,
+                },
+              },
             }}
           >
             {slide.map((slide) => (
@@ -80,6 +92,7 @@ export function Home() {
                   title="Salada Ravanello"
                   price={`R$ 49,97`}
                   numberOfDishes="01"
+                  className="card-food"
                 />
               </SplideSlide>
             ))}
@@ -94,7 +107,11 @@ export function Home() {
               fixedWidth: 200,
               gap: "1rem",
               pagination: false,
-              arrows: false,
+              breakpoints: {
+                1024: {
+                  arrows: false,
+                },
+              },
             }}
           >
             {slide.map((slide) => (
@@ -103,6 +120,7 @@ export function Home() {
                   title="Salada Ravanello"
                   price={`R$ 49,97`}
                   numberOfDishes="01"
+                  className="card-food"
                 />
               </SplideSlide>
             ))}

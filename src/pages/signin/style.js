@@ -24,6 +24,18 @@ export const Container = styled.div`
       flex-direction: column;
       margin: 7.3rem auto 0;
       gap: 3.2rem;
+
+      .inputs-login {
+        span {
+          color: ${({ theme }) => theme.COLORS.LIGHT_400};
+          font-family: "Roboto", sans-serif;
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+        }
+        input {
+          margin-top: 0.8rem;
+        }
+      }
     }
   }
 

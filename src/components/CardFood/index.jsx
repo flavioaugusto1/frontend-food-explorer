@@ -13,7 +13,7 @@ export function CardFood({
   ...rest
 }) {
   return (
-    <Container>
+    <Container {...rest}>
       <HeartIcon />
       <img src={Dish} alt="Imagem de uma salada" />
       <div id="titleDish">{title}</div>

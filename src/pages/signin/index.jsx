@@ -13,8 +13,21 @@ export function SignIn() {
         <h1>Faça login</h1>
 
         <form>
-          <Input title="E-mail" placeholder="Exemplo: exemplo@exemplo.com.br" />
-          <Input title="Senha" placeholder="No mínimo 6 caracteres" />
+          <div className="inputs-login">
+            <span>E-mail</span>
+            <Input
+              title="E-mail"
+              placeholder="Exemplo: exemplo@exemplo.com.br"
+            />
+          </div>
+
+          <div className="inputs-login">
+            <span>Senha</span>
+            <Input
+              title="Senha"
+              placeholder="No mínimo 6 caracteres"
+            />
+          </div>
 
           <Button name="Entrar" />
           <ButtonText title="Criar uma conta" />

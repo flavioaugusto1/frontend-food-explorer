@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
   height: 100%;
@@ -8,6 +9,7 @@ export const Container = styled.div`
   justify-items: center;
 
   #content {
+    max-width: 48rem;
     #wrap {
       padding: 2rem;
       #infos {
@@ -60,7 +62,7 @@ export const Container = styled.div`
     #main_dishes,
     #dessert {
       margin-bottom: 2.4rem;
-      max-width: 48rem;
+      max-width: 100%;
       padding: 1.6rem;
 
       > h2 {
@@ -73,12 +75,6 @@ export const Container = styled.div`
         margin-bottom: 2.4rem;
       }
 
-      .dishes {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        gap: 1.2rem;
-      }
       .splide {
         padding: 0;
       }
@@ -86,6 +82,75 @@ export const Container = styled.div`
 
     #meals {
       margin-top: 6.2rem;
+    }
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.MD_730}) {
+    #content{
+      max-width: 70rem;
+    }
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    #content {
+      max-width: 95rem;
+
+      #wrap {
+        #infos {
+          height: 26rem;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+
+          &::before {
+            content: "";
+            flex: 1;
+          }
+
+          img {
+            object-fit: cover;
+            width: 37rem;
+          }
+
+          #texts {
+            margin-right: 10rem;
+            h2 {
+              font-size: 4rem;
+              line-height: 5.6rem;
+              margin-bottom: 0.8rem;
+            }
+            p {
+              font-size: 1.6rem;
+            }
+          }
+        }
+      }
+      #meals,
+      #main_dishes,
+      #dessert {
+        max-width: 100%;
+
+        > h2 {
+          font-size: 3.2rem;
+        }
+
+        .dishes {
+          ul {
+            display: flex;
+            gap: 8rem;
+          }
+        }
+
+        .card-food {
+          width: 27.7rem;
+          height: 44.4rem;
+          padding: 2.4rem;
+
+          >img {
+
+          }
+        }
+      }
     }
   }
 `;
