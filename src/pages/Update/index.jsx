@@ -30,36 +30,46 @@ export function Update() {
         <h1>Editar prato</h1>
 
         <Form>
-          <label htmlFor="logo">Imagem do prato</label>
-          <Input type="file" name="logo" id="logo" />
-
-          <label htmlFor="name">Nome</label>
-          <Input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Ex.: Salada Ceasar"
-          />
-
-          <label htmlFor="category">Categoria</label>
-          <SelectButton className="select" />
-
-          <label htmlFor="ingredients">Ingredients</label>
-          <div className="ingredients">
-            <IngredientItem value="Pimenta do reino" />
-            <IngredientItem value="Frango" />
-            <IngredientItem value="Sal" />
-
-            <IngredientItem isNew name="Adicionar" />
+        <div id="image" className="label-style">
+            <label htmlFor="logo">Imagem do prato</label>
+            <Input type="file" name="logo" id="logo" />
           </div>
 
-          <label htmlFor="price">Preço</label>
-          <Input type="text" name="price" id="price" placeholder="R$ 00,00" />
+          <div id="name-input" className="label-style">
+            <label htmlFor="name" id="name">Nome</label>
+            <Input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Ex.: Salada Ceasar"
+            />
+          </div>
 
-          <label htmlFor="description">Descrição</label>
-          <TextArea placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
+          <div id="category" className="label-style">
+            <label htmlFor="category">Categoria</label>
+            <SelectButton className="select" />
+          </div>
 
-          <div className="buttons">
+          <div id="ingredients" className="label-style">
+            <label htmlFor="ingredients">Ingredientes</label>
+            <div className="ingredients">
+              <IngredientItem value="Pimenta do reino" />
+
+              <IngredientItem isNew name="Adicionar" />
+            </div>
+          </div>
+
+          <div id="description" className="label-style">
+            <label htmlFor="description">Descrição</label>
+            <TextArea placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
+          </div>
+
+          <div id="price" className="label-style">
+            <label htmlFor="price">Preço</label>
+            <Input type="text" name="price" id="price" placeholder="R$ 00,00" />
+          </div>
+
+          <div id="buttons">
             <Button name="Excluir prato" className="buttonDelete" />
             <Button name="Salvar alterações" />
           </div>

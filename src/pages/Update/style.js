@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 import { CaretLeft } from "@phosphor-icons/react";
 
@@ -38,6 +39,11 @@ export const Content = styled.main`
       font-size: 1.6546rem;
     }
   }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    padding: 4rem 12.5rem;
+    margin: auto;
+  }
 `;
 
 export const Form = styled.form`
@@ -68,18 +74,75 @@ export const Form = styled.form`
     border-radius: 8px;
   }
 
-  .buttons {
+  #buttons {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 3.2rem;
 
-    > button {
-      flex: 1 1;
-    }
     .buttonDelete {
       background-color: ${({ theme }) => theme.COLORS.DARK_800};
       &:hover {
         background-color: ${({ theme }) => theme.COLORS.DARK_900};
+      }
+    }
+  }
+
+  .label-style {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    max-width: 120rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr 30rem;
+    grid-template-rows: 1fr auto auto 1fr;
+    grid-template-areas:
+      "image name category"
+      "ingredients ingredients price"
+      "description description description"
+      "button button button";
+    justify-content: center;
+    align-items: center;
+    gap: 3.2rem;
+
+    #image {
+      grid-area: image;
+    }
+
+    #name-input {
+      grid-area: name;
+    }
+
+    #category {
+      grid-area: category;
+    }
+
+    #ingredients {
+      grid-area: ingredients;
+      .ingredients {
+        justify-content: flex-start;
+      }
+    }
+
+    #price {
+      grid-area: price;
+    }
+
+    #description {
+      grid-area: description;
+    }
+
+    #buttons {
+      grid: "button";
+      grid-column: 3;
+      grid-column-end: auto;
+
+      > button {
+        flex: none;
+        padding: 1.2rem 2.4rem;
       }
     }
   }
