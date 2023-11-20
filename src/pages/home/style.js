@@ -75,6 +75,12 @@ export const Container = styled.div`
         margin-bottom: 2.4rem;
       }
 
+      .card-food {
+        #descriptionDish {
+          display: none;
+        }
+      }
+
       .splide {
         padding: 0;
       }
@@ -86,14 +92,14 @@ export const Container = styled.div`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.MD_730}) {
-    #content{
+    #content {
       max-width: 70rem;
     }
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     #content {
-      max-width: 95rem;
+      max-width: 100rem;
 
       #wrap {
         #infos {
@@ -144,10 +150,38 @@ export const Container = styled.div`
         .card-food {
           width: 27.7rem;
           height: 44.4rem;
-          padding: 2.4rem;
 
-          >img {
+          > img {
+            width: 17.6rem;
+            height: 17.6rem;
+            object-fit: contain;
+          }
 
+          #titleDish {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 3.3rem;
+          }
+
+          #descriptionDish {
+            display: inline;
+          }
+
+          #price {
+            font-size: 3.2rem;
+            line-height: 5.1rem;
+          }
+
+          #buttons {
+            flex-direction: row;
+            > div {
+              span {
+                font-size: 2rem;
+              }
+            }
+            > button {
+              padding: 1.2rem 1.4rem;
+            }
           }
         }
       }

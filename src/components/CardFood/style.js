@@ -27,6 +27,14 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
   }
 
+  #descriptionDish {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.4rem;
+    color: ${({ theme }) => theme.COLORS.LIGHT_400};
+    text-align: center;
+    line-height: 2.2rem;
+  }
+
   #price {
     color: ${({ theme }) => theme.COLORS.CAKE_200};
     font-family: "Roboto", sans-serif;
@@ -34,8 +42,16 @@ export const Container = styled.div`
     line-height: 1.6rem;
   }
 
-  button {
-    padding: 0.4rem 5.9rem;
+  #buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.6rem;
+
+    button {
+      padding: 0.4rem 5.9rem;
+    }
   }
 `;
 

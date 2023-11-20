@@ -17,10 +17,15 @@ export function CardFood({
       <HeartIcon />
       <img src={Dish} alt="Imagem de uma salada" />
       <div id="titleDish">{title}</div>
+      <span id="descriptionDish">
+        Presunto de parma e rúcula em um pão com fermentação natural.
+      </span>
       <div id="price">{price}</div>
-      <OrderDishes numberOfDishes="01" />
 
-      <Button name="incluir" onClick={addReceiptItems} />
+      <div id="buttons">
+        <OrderDishes numberOfDishes="01" />
+        <Button name="incluir" onClick={addReceiptItems} />
+      </div>
     </Container>
   );
 }
