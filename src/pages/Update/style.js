@@ -41,7 +41,7 @@ export const Content = styled.main`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    padding: 4rem 12.5rem;
+    padding: 4rem 1em;
     margin: auto;
   }
 `;
@@ -97,7 +97,7 @@ export const Form = styled.form`
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     max-width: 120rem;
     display: grid;
-    grid-template-columns: 1fr 3fr 30rem;
+    grid-template-columns: 1fr 3fr 25rem;
     grid-template-rows: 1fr auto auto 1fr;
     grid-template-areas:
       "image name category"

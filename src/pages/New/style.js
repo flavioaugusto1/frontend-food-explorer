@@ -17,7 +17,6 @@ export const Container = styled.div`
 
 export const Content = styled.main`
   height: 100%;
-  padding: 1rem 3.2rem 5.3rem;
 
   > h1 {
     font-size: 3.6rem;
@@ -41,7 +40,7 @@ export const Content = styled.main`
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
-    padding: 4rem 12.5rem;
+    padding: 4rem 1em;
     margin: auto;
   }
 `;
