@@ -28,30 +28,34 @@ export function Details() {
             <ButtonText title="voltar" />
           </section>
 
-          <div id="logo-product">
-            <img src={Dish} alt="imagem de salada" />
-          </div>
+          <section id="content-product">
+            <div id="logo-product">
+              <img src={Dish} alt="imagem de salada" />
+            </div>
 
-          <section id="description-product">
-            <h1>Salada Ravanello</h1>
-            <p>
-              Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.
-            </p>
+            <section id="description-product">
+              <h1>Salada Ravanello</h1>
+              <p>
+                Rabanetes, folhas verdes e molho agridoce salpicados com
+                gergelim.
+              </p>
 
-            <ul className="ingredients">
-              <Ingredients ingredient="alface" />
-              <Ingredients ingredient="limão" />
-              <Ingredients ingredient="bacon" />
-              <Ingredients ingredient="peito de frango" />
-              <Ingredients ingredient="pimenta do reino" />
-              <Ingredients ingredient="sal do himalia" />
-            </ul>
+              <ul className="ingredients">
+                <Ingredients ingredient="alface" />
+                <Ingredients ingredient="limão" />
+                <Ingredients ingredient="bacon" />
+                <Ingredients ingredient="peito de frango" />
+                <Ingredients ingredient="pimenta do reino" />
+                <Ingredients ingredient="sal do himalia" />
+              </ul>
+
+              <div id="buttons">
+                <OrderDishes numberOfDishes="01" />
+                <Button name={`pedir ∙ R$ 25,00`} icon id="addReceiptMobile" />
+                <Button name={`incluir ∙ R$ 25,00`} id="addReceiptDesktop" />
+              </div>
+            </section>
           </section>
-
-          <div id="buttons">
-            <OrderDishes numberOfDishes="01" />
-            <Button name={`pedir . R$ 25,00`} icon id="addReceipt" />
-          </div>
         </div>
       </Content>
       <Footer />

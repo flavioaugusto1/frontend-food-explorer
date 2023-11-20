@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 import { CaretLeft } from "@phosphor-icons/react";
 
@@ -89,13 +90,80 @@ export const Content = styled.section`
       justify-content: center;
       gap: 2rem;
 
-      #addReceipt {
+      #addReceiptMobile {
         width: 100%;
-        padding: .8rem 1.6rem;
+        padding: 0.8rem 1.6rem;
         > svg {
           width: 2.1rem;
           height: 2.1rem;
           margin-right: 0.5rem;
+        }
+      }
+
+      #addReceiptDesktop {
+        display: none;
+      }
+    }
+  }
+
+  @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
+    width: 100%;
+    padding: 0 12.2rem;
+    margin-top: 3.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    #wrap {
+      max-width: 120rem;
+    }
+
+    #content-product {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4.7rem;
+
+      margin-top: 4.2rem;
+
+      #logo-product {
+        img {
+          width: 40rem;
+          height: 40rem;
+        }
+      }
+
+      #description-product {
+        display: block;
+
+        h1 {
+          font-size: 4rem;
+          font-weight: 500;
+          line-height: 5.6rem;
+        }
+
+        p {
+          font-size: 2.4rem;
+          line-height: 3.3rem;
+
+          margin: 2.4rem 0;
+          text-align: justify;
+        }
+
+        #buttons {
+          justify-content: flex-start;
+          
+          #addReceiptMobile {
+            display: none;
+          }
+          #addReceiptDesktop {
+            display: block;
+          }
+
+          span {
+            font-size: 2rem;
+          }
         }
       }
     }
