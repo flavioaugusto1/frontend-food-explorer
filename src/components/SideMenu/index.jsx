@@ -11,7 +11,7 @@ import { Input } from "../Input";
 import { ButtonText } from "../ButtonText";
 import { Footer } from "../Footer";
 
-export function SideMenu({ menuIsOpen, onCloseMenu }) {
+export function SideMenu({ menuIsOpen, onCloseMenu, signOutUser }) {
   return (
     <Container data-menu-is-open={menuIsOpen}>
       <Header>
@@ -30,11 +30,10 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
             <ButtonText title="Novo prato" />
           </li>
           <li>
-            <ButtonText title="Sair" />
+            <ButtonText title="Sair" onClick={signOutUser} />
           </li>
         </MenuList>
       </Content>
-
     </Container>
   );
 }

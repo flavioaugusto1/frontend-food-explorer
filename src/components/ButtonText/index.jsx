@@ -1,8 +1,8 @@
 import { Container } from "./style";
 
-export function ButtonText({ title }){
+export function ButtonText({ title, ...rest }){
  return(
-  <Container href="#">
+  <Container {...rest}>
     {title}
   </Container>
  )

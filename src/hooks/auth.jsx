@@ -8,8 +8,9 @@ function AuthProvider({ children }) {
 
   async function signIn({ email, password }) {
     try {
-      const response = await api.post("/sesssion/", { email, password });
+      const response = await api.post("/sessions", { email, password });
       const { user, token } = response.data;
+      console.log(response)
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
@@ -48,7 +49,7 @@ function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthProvider.Provider
+    <AuthContext.Provider
       value={{
         signIn,
         signOut,
@@ -56,7 +57,7 @@ function AuthProvider({ children }) {
       }}
     >
       {children}
-    </AuthProvider.Provider>
+    </AuthContext.Provider>
   );
 }
 

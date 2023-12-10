@@ -4,7 +4,7 @@ import { Brand } from "../Brand";
 import { Input } from "../Input";
 import { Button } from "../Button";
 
-export function Header({ receipts, onOpenMenu }) {
+export function Header({ receipts, onOpenMenu, signOutUser }) {
   return (
     <Container>
       <ListIcon onClick={onOpenMenu} />
@@ -26,7 +26,7 @@ export function Header({ receipts, onOpenMenu }) {
         </div>
 
         <div id="signout">
-          <SignOutIcon />
+          <SignOutIcon onClick={signOutUser} />
         </div>
       </div>
     </Container>

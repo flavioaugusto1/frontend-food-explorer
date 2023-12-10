@@ -7,7 +7,8 @@ export const Container = styled.a`
   text-decoration: none;
 
   font-size: 1.4rem;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-weight: 500;
   line-height: 2.4rem;
-`
+  cursor: pointer;
+`;

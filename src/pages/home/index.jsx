@@ -1,4 +1,6 @@
 import { Container } from "./style";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
@@ -23,13 +25,25 @@ export function Home() {
   const [items, setItems] = useState(1);
   const [receipt, setReceipt] = useState(0);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const { signOut } = useAuth();
+
+  const navigate = useNavigate("");
+
+  function handleSignOut() {
+    signOut();
+  }
 
   return (
     <Container>
-      <Header receipts={receipt} onOpenMenu={() => setMenuIsOpen(true)} />
+      <Header
+        receipts={receipt}
+        onOpenMenu={() => setMenuIsOpen(true)}
+        signOutUser={handleSignOut}
+      />
       <SideMenu
         menuIsOpen={menuIsOpen}
         onCloseMenu={() => setMenuIsOpen(false)}
+        signOutUser={handleSignOut}
       />
 
       <div id="content">

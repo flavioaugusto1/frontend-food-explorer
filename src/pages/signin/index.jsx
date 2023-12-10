@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 import { Container } from "./style";
 import { Brand } from "../../components/Brand";
 import { Input } from "../../components/Input";
@@ -5,6 +8,21 @@ import { Button } from "../../components/Button";
 import { ButtonText } from "../../components/ButtonText";
 
 export function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signIn } = useAuth();
+
+  const navigate = useNavigate();
+
+  function handleSignIn() {
+    signIn({ email, password });
+    navigate("/");
+  }
+
+  function handleNavigate() {
+    navigate("/register");
+  }
+
   return (
     <Container>
       <Brand size={47} />
@@ -17,7 +35,9 @@ export function SignIn() {
             <span>E-mail</span>
             <Input
               title="E-mail"
+              type="email"
               placeholder="Exemplo: exemplo@exemplo.com.br"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -25,12 +45,14 @@ export function SignIn() {
             <span>Senha</span>
             <Input
               title="Senha"
+              type="password"
               placeholder="No mínimo 6 caracteres"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          <Button name="Entrar" />
-          <ButtonText title="Criar uma conta" />
+          <Button name="Entrar" onClick={handleSignIn} />
+          <ButtonText title="Criar uma conta" onClick={handleNavigate} />
         </form>
       </section>
     </Container>
