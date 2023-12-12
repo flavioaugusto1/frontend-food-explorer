@@ -13,6 +13,7 @@ export const Container = styled.div`
     #wrap {
       padding: 2rem;
       #infos {
+        max-width: 93rem;
         position: relative;
         margin-top: 4.4rem;
 
@@ -34,7 +35,7 @@ export const Container = styled.div`
 
         &::before {
           content: "";
-          width: 10rem;
+          width: 31rem;
           height: 12rem;
         }
 
@@ -59,7 +60,7 @@ export const Container = styled.div`
     }
 
     #meals,
-    #main_dishes,
+    #drinks,
     #dessert {
       margin-bottom: 2.4rem;
       max-width: 100%;
@@ -108,6 +109,13 @@ export const Container = styled.div`
           justify-content: space-around;
           align-items: center;
 
+          background: rgb(13, 42, 54);
+          background: linear-gradient(
+            200deg,
+            rgba(13, 42, 54, 1) 22%,
+            rgba(13, 29, 37, 1) 38%
+          );
+
           &::before {
             content: "";
             flex: 1;
@@ -132,7 +140,7 @@ export const Container = styled.div`
         }
       }
       #meals,
-      #main_dishes,
+      #drinks,
       #dessert {
         max-width: 100%;
 
@@ -144,12 +152,12 @@ export const Container = styled.div`
           ul {
             display: flex;
             gap: 8rem;
+            
           }
         }
 
         .card-food {
           width: 27.7rem;
-          height: 44.4rem;
 
           > img {
             width: 17.6rem;

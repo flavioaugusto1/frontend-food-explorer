@@ -10,6 +10,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   gap: 1.2rem;
 
   padding: 2.4rem;
@@ -17,12 +18,14 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK_300};
 
   border-radius: 0.8rem;
+  cursor: pointer;
 
   #titleDish {
     font-family: "Poppins", sans-serif;
     font-size: 1.4rem;
     font-weight: 500;
     line-height: 2.4rem;
+    white-space: nowrap;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
   }
@@ -33,6 +36,10 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.LIGHT_400};
     text-align: center;
     line-height: 2.2rem;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
   }
 
   #price {

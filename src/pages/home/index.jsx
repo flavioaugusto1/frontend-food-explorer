@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { api } from "../../services/api";
 import { Container } from "./style";
 import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
@@ -16,22 +18,38 @@ import { Header } from "../../components/Header";
 import { SideMenu } from "../../components/SideMenu";
 import { CardFood } from "../../components/CardFood";
 import { Footer } from "../../components/Footer";
-import { useState } from "react";
 
 export function Home() {
-  const [slide, setSlide] = useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 9,
-  ]);
-  const [items, setItems] = useState(1);
+  const [mainDishes, setMainDishes] = useState([]);
+  const [drinks, setDrinks] = useState([]);
+  const [desserts, setDesserts] = useState([]);
   const [receipt, setReceipt] = useState(0);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const { signOut } = useAuth();
 
-  const navigate = useNavigate("");
+  const navigate = useNavigate();
 
   function handleSignOut() {
     signOut();
   }
+
+  useEffect(() => {
+    async function fetchDishes() {
+      try {
+        const dishes = await api.get("/dishes/all?search=prato_principal");
+        const drinks = await api.get("/dishes/all?search=bebidas");
+        const desserts = await api.get("/dishes/all?search=sobremesas");
+
+        setMainDishes(dishes.data);
+        setDrinks(drinks.data);
+        setDesserts(desserts.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    fetchDishes();
+  }, []);
 
   return (
     <Container>
@@ -59,86 +77,95 @@ export function Home() {
 
         <section id="meals">
           <h2>Refeições</h2>
-          <Splide
-            className="dishes"
-            options={{
-              fixedWidth: 200,
-              gap: "1rem",
-              pagination: false,
-              breakpoints: {
-                1024: {
-                  arrows: false,
+          {mainDishes && (
+            <Splide
+              className="dishes"
+              options={{
+                fixedWidth: 200,
+                gap: "1rem",
+                pagination: false,
+                breakpoints: {
+                  1024: {
+                    arrows: false,
+                  },
                 },
-              },
-            }}
-          >
-            {slide.map((slide) => (
-              <SplideSlide key={slide.src}>
-                <CardFood
-                  title="Salada Ravanello"
-                  price={`R$ 49,97`}
-                  numberOfDishes="01"
-                  className="card-food"
-                />
-              </SplideSlide>
-            ))}
-          </Splide>
+              }}
+            >
+              {mainDishes.map((dish) => (
+                <SplideSlide key={dish.id}>
+                  <CardFood
+                    title={dish.name}
+                    description={dish.description}
+                    price={`R$ ${dish.price}`}
+                    numberOfDishes="01"
+                    className="card-food"
+                  />
+                </SplideSlide>
+              ))}
+            </Splide>
+          )}
         </section>
 
-        <section id="main_dishes">
-          <h2>Pratos principais</h2>
-          <Splide
-            className="dishes"
-            options={{
-              fixedWidth: 200,
-              gap: "1rem",
-              pagination: false,
-              breakpoints: {
-                1024: {
-                  arrows: false,
+        <section id="drinks">
+          <h2>Bebidas</h2>
+          {drinks && (
+            <Splide
+              className="dishes"
+              options={{
+                fixedWidth: 200,
+                gap: "1rem",
+                pagination: false,
+                breakpoints: {
+                  1024: {
+                    arrows: false,
+                  },
                 },
-              },
-            }}
-          >
-            {slide.map((slide) => (
-              <SplideSlide key={slide.src}>
-                <CardFood
-                  title="Salada Ravanello"
-                  price={`R$ 49,97`}
-                  numberOfDishes="01"
-                  className="card-food"
-                />
-              </SplideSlide>
-            ))}
-          </Splide>
+              }}
+            >
+              {drinks.map((dish) => (
+                <SplideSlide key={dish.id}>
+                  <CardFood
+                    title={dish.name}
+                    description={dish.description}
+                    price={`R$ ${dish.price}`}
+                    numberOfDishes="01"
+                    className="card-food"
+                  />
+                </SplideSlide>
+              ))}
+            </Splide>
+          )}
         </section>
 
         <section id="dessert">
           <h2>Sobremesas</h2>
-          <Splide
-            className="dishes"
-            options={{
-              fixedWidth: 200,
-              gap: "1rem",
-              pagination: false,
-              breakpoints: {
-                1024: {
-                  arrows: false,
+          {desserts && (
+            <Splide
+              className="dishes"
+              options={{
+                fixedWidth: 200,
+                gap: "1rem",
+                pagination: false,
+                breakpoints: {
+                  1024: {
+                    arrows: false,
+                  },
                 },
-              },
-            }}
-          >
-            {slide.map((slide) => (
-              <SplideSlide key={slide.src}>
-                <CardFood
-                  title="Salada Ravanello"
-                  price={`R$ 49,97`}
-                  numberOfDishes="01"
-                  className="card-food"
-                />
-              </SplideSlide>
-            ))}
-          </Splide>
+              }}
+            >
+              {desserts.map((dish) => (
+                <SplideSlide key={dish.id}>
+                  <CardFood
+                    title={dish.name}
+                    description={dish.description}
+                    price={`R$ ${dish.price}`}
+                    numberOfDishes="01"
+                    className="card-food"
+                  />
+                </SplideSlide>
+              ))}
+            </Splide>
+          )}
         </section>
       </div>
 

@@ -7,6 +7,7 @@ import { OrderDishes } from "../OrderDishes";
 export function CardFood({
   title,
   price,
+  description,
   numberOfDishes,
   onAddItems,
   addReceiptItems,
@@ -17,9 +18,7 @@ export function CardFood({
       <HeartIcon />
       <img src={Dish} alt="Imagem de uma salada" />
       <div id="titleDish">{title}</div>
-      <span id="descriptionDish">
-        Presunto de parma e rúcula em um pão com fermentação natural.
-      </span>
+      <span id="descriptionDish">{description}</span>
       <div id="price">{price}</div>
 
       <div id="buttons">

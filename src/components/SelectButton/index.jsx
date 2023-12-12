@@ -23,7 +23,7 @@ export function SelectButton() {
             <SelectItem value="prato_principal">
               <Select.ItemText className="SelectItem">Prato Principal</Select.ItemText>
             </SelectItem>
-            <SelectItem value="sobremesa">
+            <SelectItem value="sobremesas">
               <Select.ItemText>Sobremesa</Select.ItemText>
             </SelectItem>
             <SelectItem value="bebidas">
