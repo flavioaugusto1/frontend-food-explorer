@@ -33,6 +33,10 @@ export function Home() {
     signOut();
   }
 
+  function handleDetails(id) {
+    navigate(`/details/${id}`);
+  }
+
   useEffect(() => {
     async function fetchDishes() {
       try {
@@ -44,7 +48,7 @@ export function Home() {
         setDrinks(drinks.data);
         setDesserts(desserts.data);
       } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
       }
     }
 
@@ -99,6 +103,7 @@ export function Home() {
                     price={`R$ ${dish.price}`}
                     numberOfDishes="01"
                     className="card-food"
+                    onClick={() => handleDetails(dish.id)}
                   />
                 </SplideSlide>
               ))}
@@ -130,6 +135,7 @@ export function Home() {
                     price={`R$ ${dish.price}`}
                     numberOfDishes="01"
                     className="card-food"
+                    onClick={() => handleDetails(dish.id)}
                   />
                 </SplideSlide>
               ))}
@@ -161,6 +167,7 @@ export function Home() {
                     price={`R$ ${dish.price}`}
                     numberOfDishes="01"
                     className="card-food"
+                    onClick={() => handleDetails(dish.id)}
                   />
                 </SplideSlide>
               ))}
