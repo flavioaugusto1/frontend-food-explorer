@@ -44,7 +44,7 @@ export function Home() {
         setDrinks(drinks.data);
         setDesserts(desserts.data);
       } catch (error) {
-        console.log(error.message);
+        console.log(error.message)
       }
     }
 
