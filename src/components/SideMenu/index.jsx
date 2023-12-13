@@ -14,9 +14,14 @@ import { Input } from "../Input";
 import { ButtonText } from "../ButtonText";
 import { Footer } from "../Footer";
 
-export function SideMenu({ menuIsOpen, onCloseMenu, signOutUser }) {
-  const { user } = useAuth();
+export function SideMenu({ menuIsOpen, onCloseMenu }) {
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
+
+  function handleSignOut() {
+    signOut();
+    navigate("/");
+  }
 
   function handleNavigate() {
     navigate("/new");
@@ -42,7 +47,7 @@ export function SideMenu({ menuIsOpen, onCloseMenu, signOutUser }) {
             </li>
           )}
           <li>
-            <ButtonText title="Sair" onClick={signOutUser} />
+            <ButtonText title="Sair" onClick={handleSignOut} />
           </li>
         </MenuList>
       </Content>

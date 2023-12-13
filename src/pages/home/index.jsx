@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
-import { useAuth } from "../../hooks/auth";
 import { useNavigate } from "react-router-dom";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -25,13 +24,7 @@ export function Home() {
   const [desserts, setDesserts] = useState([]);
   const [receipt, setReceipt] = useState(0);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const { signOut } = useAuth();
-
   const navigate = useNavigate();
-
-  function handleSignOut() {
-    signOut();
-  }
 
   function handleDetails(id) {
     navigate(`/details/${id}`);
@@ -60,12 +53,10 @@ export function Home() {
       <Header
         receipts={receipt}
         onOpenMenu={() => setMenuIsOpen(true)}
-        signOutUser={handleSignOut}
       />
       <SideMenu
         menuIsOpen={menuIsOpen}
         onCloseMenu={() => setMenuIsOpen(false)}
-        signOutUser={handleSignOut}
       />
 
       <div id="content">

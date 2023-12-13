@@ -1,10 +1,20 @@
 import { Container, ListIcon, ReceiptIcon, SignOutIcon } from "./style";
+import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 import { Brand } from "../Brand";
 import { Input } from "../Input";
 import { Button } from "../Button";
 
-export function Header({ receipts, onOpenMenu, signOutUser }) {
+export function Header({ receipts, onOpenMenu }) {
+  const { signOut } = useAuth();
+  const navigate = useNavigate();
+
+  function handleSignOut() {
+    signOut();
+    navigate("/")
+  }
+
   return (
     <Container>
       <ListIcon onClick={onOpenMenu} />
@@ -26,7 +36,7 @@ export function Header({ receipts, onOpenMenu, signOutUser }) {
         </div>
 
         <div id="signout">
-          <SignOutIcon onClick={signOutUser} />
+          <SignOutIcon onClick={handleSignOut} />
         </div>
       </div>
     </Container>
