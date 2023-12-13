@@ -12,14 +12,14 @@ export function Header({ receipts, onOpenMenu }) {
 
   function handleSignOut() {
     signOut();
-    navigate("/")
+    navigate("/");
   }
 
   return (
     <Container>
       <ListIcon onClick={onOpenMenu} />
 
-      <Brand />
+      <Brand id="brand"  />
 
       <div id="receipt">
         <span>{receipts}</span>
