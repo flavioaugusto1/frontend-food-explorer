@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { HeartStraight } from "@phosphor-icons/react";
+import { HeartStraight, PencilSimple } from "@phosphor-icons/react";
 
 export const Container = styled.div`
   position: relative;
@@ -63,6 +63,17 @@ export const Container = styled.div`
 `;
 
 export const HeartIcon = styled(HeartStraight).attrs(({ theme }) => ({
+  size: 24,
+  color: theme.COLORS.LIGHT_100,
+}))`
+  top: 1.6rem;
+  right: 1.6rem;
+  position: absolute;
+
+  cursor: pointer;
+`;
+
+export const PencilIcon = styled(PencilSimple).attrs(({ theme }) => ({
   size: 24,
   color: theme.COLORS.LIGHT_100,
 }))`
