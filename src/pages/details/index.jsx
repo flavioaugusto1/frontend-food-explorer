@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
 import { Container, Content, BackButtonIcon } from "./style";
 import Dish from "../../assets/dish_264.png";
 
@@ -11,7 +13,27 @@ import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
 
 export function Details() {
+  const [data, setData] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  function handleNavigte() {
+    navigate("/");
+  }
+
+  useEffect(() => {
+    async function fetchDetailsDish() {
+      try {
+        const response = await api.get(`/dishes/details/${id}`);
+        setData(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    fetchDetailsDish();
+  }, []);
 
   return (
     <Container>
@@ -24,38 +46,46 @@ export function Details() {
       <Content>
         <div id="wrap">
           <section id="backPage">
-            <BackButtonIcon />
-            <ButtonText title="voltar" />
+            <BackButtonIcon onClick={handleNavigte} />
+            <ButtonText title="voltar" onClick={handleNavigte} />
           </section>
 
-          <section id="content-product">
-            <div id="logo-product">
-              <img src={Dish} alt="imagem de salada" />
-            </div>
-
-            <section id="description-product">
-              <h1>Salada Ravanello</h1>
-              <p>
-                Rabanetes, folhas verdes e molho agridoce salpicados com
-                gergelim.
-              </p>
-
-              <ul className="ingredients">
-                <Ingredients ingredient="alface" />
-                <Ingredients ingredient="limão" />
-                <Ingredients ingredient="bacon" />
-                <Ingredients ingredient="peito de frango" />
-                <Ingredients ingredient="pimenta do reino" />
-                <Ingredients ingredient="sal do himalia" />
-              </ul>
-
-              <div id="buttons">
-                <OrderDishes numberOfDishes="01" />
-                <Button name={`pedir ∙ R$ 25,00`} icon id="addReceiptMobile" />
-                <Button name={`incluir ∙ R$ 25,00`} id="addReceiptDesktop" />
+          {data && (
+            <section id="content-product">
+              <div id="logo-product">
+                <img src={Dish} alt="imagem de salada" />
               </div>
+
+              <section id="description-product">
+                <h1>{data.name}</h1>
+                <p>{data.description}</p>
+
+                {data.ingredients && (
+                  <ul className="ingredients">
+                    {data.ingredients.map((ingredient) => (
+                      <Ingredients
+                        key={ingredient.id}
+                        ingredient={ingredient.name}
+                      />
+                    ))}
+                  </ul>
+                )}
+
+                <div id="buttons">
+                  <OrderDishes numberOfDishes="01" />
+                  <Button
+                    name={`pedir ∙ R$ ${data.price}`}
+                    icon
+                    id="addReceiptMobile"
+                  />
+                  <Button
+                    name={`incluir ∙ R$ ${data.price}`}
+                    id="addReceiptDesktop"
+                  />
+                </div>
+              </section>
             </section>
-          </section>
+          )}
         </div>
       </Content>
       <Footer />

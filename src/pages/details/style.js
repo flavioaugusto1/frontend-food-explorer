@@ -144,7 +144,7 @@ export const Content = styled.section`
         }
 
         p {
-          font-size: 2.4rem;
+          font-size: 2rem;
           line-height: 3.3rem;
 
           margin: 2.4rem 0;
@@ -153,7 +153,7 @@ export const Content = styled.section`
 
         #buttons {
           justify-content: flex-start;
-          
+
           #addReceiptMobile {
             display: none;
           }
@@ -173,4 +173,6 @@ export const Content = styled.section`
 export const BackButtonIcon = styled(CaretLeft).attrs(({ theme }) => ({
   size: "3.2rem",
   color: theme.COLORS.LIGHT_100,
-}))``;
+}))`
+  cursor: pointer;
+`;
