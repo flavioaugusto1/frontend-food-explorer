@@ -1,3 +1,6 @@
+import { useAuth } from "../../hooks/auth";
+import { USER_ROLE } from "../../utils/roles";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Header,
@@ -12,6 +15,13 @@ import { ButtonText } from "../ButtonText";
 import { Footer } from "../Footer";
 
 export function SideMenu({ menuIsOpen, onCloseMenu, signOutUser }) {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  function handleNavigate() {
+    navigate("/new");
+  }
+
   return (
     <Container data-menu-is-open={menuIsOpen}>
       <Header>
@@ -26,9 +36,11 @@ export function SideMenu({ menuIsOpen, onCloseMenu, signOutUser }) {
         </div>
 
         <MenuList>
-          <li>
-            <ButtonText title="Novo prato" />
-          </li>
+          {[USER_ROLE.ADMIN].includes(user.role) && (
+            <li>
+              <ButtonText title="Novo prato" onClick={handleNavigate} />
+            </li>
+          )}
           <li>
             <ButtonText title="Sair" onClick={signOutUser} />
           </li>

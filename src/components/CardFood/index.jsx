@@ -19,8 +19,8 @@ export function CardFood({
 
   return (
     <Container {...rest}>
-      {user.role === USER_ROLE.ADMIN && <PencilIcon />}
-      {user.role === USER_ROLE.CUSTOMER && <HeartIcon />}
+      {[USER_ROLE.ADMIN].includes(user.role) && <PencilIcon />}
+      {[USER_ROLE.CUSTOMER].includes(user.role) && <HeartIcon />}
       <img src={Dish} alt="Imagem de uma salada" />
       <div id="titleDish">{title}</div>
       <span id="descriptionDish">{description}</span>
