@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
+
+import { useAuth } from "../../hooks/auth";
+import { USER_ROLE } from "../../utils/roles";
+
 import { Container, Content, BackButtonIcon } from "./style";
 import Dish from "../../assets/dish_264.png";
 
@@ -17,6 +21,8 @@ export function Details() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const { user } = useAuth();
 
   function handleNavigte() {
     navigate("/");
@@ -72,16 +78,24 @@ export function Details() {
                 )}
 
                 <div id="buttons">
-                  <OrderDishes numberOfDishes="01" />
-                  <Button
-                    name={`pedir ∙ R$ ${data.price}`}
-                    icon
-                    id="addReceiptMobile"
-                  />
-                  <Button
-                    name={`incluir ∙ R$ ${data.price}`}
-                    id="addReceiptDesktop"
-                  />
+                  {[USER_ROLE.CUSTOMER].includes(user.role) && (
+                    <>
+                      <OrderDishes numberOfDishes="01" />
+                      <Button
+                        name={`pedir ∙ R$ ${data.price}`}
+                        icon
+                        id="addReceiptMobile"
+                      />
+                      <Button
+                        name={`incluir ∙ R$ ${data.price}`}
+                        id="addReceiptDesktop"
+                      />
+                    </>
+                  )}
+
+                  {[USER_ROLE.ADMIN].includes(user.role) && (
+                    <Button name="Editar prato" />
+                  )}
                 </div>
               </section>
             </section>
