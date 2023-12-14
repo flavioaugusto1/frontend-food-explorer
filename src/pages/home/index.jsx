@@ -26,10 +26,6 @@ export function Home() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  function handleDetails(id) {
-    navigate(`/details/${id}`);
-  }
-
   useEffect(() => {
     async function fetchDishes() {
       try {
@@ -48,12 +44,14 @@ export function Home() {
     fetchDishes();
   }, []);
 
+  function handleNavigateDetails(id) {
+    console.log("oi")
+    navigate(`/details/${id}`);
+  }
+
   return (
     <Container>
-      <Header
-        receipts={receipt}
-        onOpenMenu={() => setMenuIsOpen(true)}
-      />
+      <Header receipts={receipt} onOpenMenu={() => setMenuIsOpen(true)} />
       <SideMenu
         menuIsOpen={menuIsOpen}
         onCloseMenu={() => setMenuIsOpen(false)}
@@ -94,7 +92,7 @@ export function Home() {
                     price={`R$ ${dish.price}`}
                     numberOfDishes="01"
                     className="card-food"
-                    onClick={() => handleDetails(dish.id)}
+                    onNavigate={() => handleNavigateDetails(dish.id)}
                   />
                 </SplideSlide>
               ))}
@@ -126,7 +124,7 @@ export function Home() {
                     price={`R$ ${dish.price}`}
                     numberOfDishes="01"
                     className="card-food"
-                    onClick={() => handleDetails(dish.id)}
+                    onNavigate={() => handleNavigateDetails(dish.id)}
                   />
                 </SplideSlide>
               ))}
@@ -158,7 +156,7 @@ export function Home() {
                     price={`R$ ${dish.price}`}
                     numberOfDishes="01"
                     className="card-food"
-                    onClick={() => handleDetails(dish.id)}
+                    onNavigate={() => handleNavigateDetails(dish.id)}
                   />
                 </SplideSlide>
               ))}

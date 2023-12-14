@@ -18,7 +18,10 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK_300};
 
   border-radius: 0.8rem;
-  cursor: pointer;
+
+  >img {
+    cursor: pointer;
+  }
 
   #titleDish {
     font-family: "Poppins", sans-serif;
@@ -28,6 +31,7 @@ export const Container = styled.div`
     white-space: nowrap;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_300};
+    cursor: pointer;
   }
 
   #descriptionDish {
@@ -40,6 +44,7 @@ export const Container = styled.div`
     max-width: 100%;
     overflow-x: hidden;
     text-overflow: ellipsis;
+    cursor: pointer;
   }
 
   #price {

@@ -6,7 +6,6 @@ import { Hexagon } from "@phosphor-icons/react";
 
 export function Brand({ size }) {
   const { user } = useAuth();
-  console.log(user);
 
   return (
     <Container>

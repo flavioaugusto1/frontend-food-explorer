@@ -1,5 +1,6 @@
 import { Container, ListIcon, ReceiptIcon, SignOutIcon } from "./style";
 import { useAuth } from "../../hooks/auth";
+import { USER_ROLE } from "../../utils/roles";
 import { useNavigate } from "react-router-dom";
 
 import { Brand } from "../Brand";
@@ -7,7 +8,7 @@ import { Input } from "../Input";
 import { Button } from "../Button";
 
 export function Header({ receipts, onOpenMenu }) {
-  const { signOut } = useAuth();
+  const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
   function handleSignOut() {
@@ -15,11 +16,15 @@ export function Header({ receipts, onOpenMenu }) {
     navigate("/");
   }
 
+  function handleNewDish() {
+    navigate("/new");
+  }
+
   return (
     <Container>
       <ListIcon onClick={onOpenMenu} />
 
-      <Brand id="brand"  />
+      <Brand id="brand" />
 
       <div id="receipt">
         <span>{receipts}</span>
@@ -31,9 +36,17 @@ export function Header({ receipts, onOpenMenu }) {
       </div>
 
       <div id="wrapButton">
-        <div id="button">
-          <Button name={`Pedidos (${receipts})`} icon />
-        </div>
+        {[USER_ROLE.CUSTOMER].includes(user.role) && (
+          <div id="button">
+            <Button name={`Pedidos (${receipts})`} icon />
+          </div>
+        )}
+
+        {[USER_ROLE.ADMIN].includes(user.role) && (
+          <div id="button">
+            <Button name="Novo prato" onClick={handleNewDish} />
+          </div>
+        )}
 
         <div id="signout">
           <SignOutIcon onClick={handleSignOut} />
