@@ -128,7 +128,7 @@ export function Home() {
                     price={`R$ ${dish.price}`}
                     numberOfDishes="01"
                     className="card-food"
-                    onNavigate={() => handleNavigateDetails(dish.id)}
+                    onNavigateDetails={() => handleNavigateDetails(dish.id)}
                     onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
                   />
                 </SplideSlide>
@@ -161,7 +161,7 @@ export function Home() {
                     price={`R$ ${dish.price}`}
                     numberOfDishes="01"
                     className="card-food"
-                    onNavigate={() => handleNavigateDetails(dish.id)}
+                    onNavigateDetails={() => handleNavigateDetails(dish.id)}
                     onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
                   />
                 </SplideSlide>
