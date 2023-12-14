@@ -14,7 +14,8 @@ export function CardFood({
   numberOfDishes,
   onAddItems,
   addReceiptItems,
-  onNavigate,
+  onNavigateDetails,
+  onNavigateUpdate,
   ...rest
 }) {
   const { user } = useAuth();
@@ -22,15 +23,15 @@ export function CardFood({
   return (
     <Container {...rest}>
       {[USER_ROLE.ADMIN].includes(user.role) && (
-        <PencilIcon onClick={onNavigate} />
+        <PencilIcon onClick={onNavigateUpdate} />
       )}
       {[USER_ROLE.CUSTOMER].includes(user.role) && <HeartIcon />}
 
-      <img src={Dish} alt="Imagem de uma salada" onClick={onNavigate} />
-      <div id="titleDish" onClick={onNavigate}>
+      <img src={Dish} alt="Imagem de uma salada" onClick={onNavigateDetails} />
+      <div id="titleDish" onClick={onNavigateDetails}>
         {title}
       </div>
-      <span id="descriptionDish" onClick={onNavigate}>
+      <span id="descriptionDish" onClick={onNavigateDetails}>
         {description}
       </span>
       <div id="price">{price}</div>

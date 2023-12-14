@@ -35,7 +35,6 @@ export function Update() {
 
     fetchDetails();
   }, []);
-  console.log(data);
 
   return (
     <Container>

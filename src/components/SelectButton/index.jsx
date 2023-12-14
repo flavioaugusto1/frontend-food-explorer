@@ -8,7 +8,6 @@ import {
 } from "./style";
 
 export function SelectButton({ data }) {
-  console.log(data === "bebidas");
   return (
     <Select.Root defaultValue={data}>
       <SelectTrigger>

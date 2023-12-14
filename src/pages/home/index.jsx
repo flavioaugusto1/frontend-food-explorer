@@ -45,8 +45,11 @@ export function Home() {
   }, []);
 
   function handleNavigateDetails(id) {
-    console.log("oi")
     navigate(`/details/${id}`);
+  }
+
+  function handleNavigateUpdate(id) {
+    navigate(`/update/${id}`);
   }
 
   return (
@@ -92,7 +95,8 @@ export function Home() {
                     price={`R$ ${dish.price}`}
                     numberOfDishes="01"
                     className="card-food"
-                    onNavigate={() => handleNavigateDetails(dish.id)}
+                    onNavigateDetails={() => handleNavigateDetails(dish.id)}
+                    onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
                   />
                 </SplideSlide>
               ))}
@@ -125,6 +129,7 @@ export function Home() {
                     numberOfDishes="01"
                     className="card-food"
                     onNavigate={() => handleNavigateDetails(dish.id)}
+                    onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
                   />
                 </SplideSlide>
               ))}
@@ -157,6 +162,7 @@ export function Home() {
                     numberOfDishes="01"
                     className="card-food"
                     onNavigate={() => handleNavigateDetails(dish.id)}
+                    onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
                   />
                 </SplideSlide>
               ))}
