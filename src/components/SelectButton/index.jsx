@@ -7,11 +7,12 @@ import {
   IconDown,
 } from "./style";
 
-export function SelectButton() {
+export function SelectButton({ data }) {
+  console.log(data === "bebidas");
   return (
-    <Select.Root>
+    <Select.Root defaultValue={data}>
       <SelectTrigger>
-        <Select.Value placeholder="Selecione a categoria" />
+        <Select.Value placeholder={"Selecione a categoria"} />
         <Select.Icon>
           <IconDown />
         </Select.Icon>
@@ -21,7 +22,9 @@ export function SelectButton() {
         <SelectContent position="popper" sideOffset={2}>
           <SelectViewport>
             <SelectItem value="prato_principal">
-              <Select.ItemText className="SelectItem">Prato Principal</Select.ItemText>
+              <Select.ItemText className="SelectItem">
+                Prato Principal
+              </Select.ItemText>
             </SelectItem>
             <SelectItem value="sobremesas">
               <Select.ItemText>Sobremesa</Select.ItemText>

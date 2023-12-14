@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { api } from "../../services/api";
 import { Container, Content, Form, BackButtonIcon } from "./style";
 
 import { Header } from "../../components/Header";
@@ -13,12 +14,28 @@ import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
 
 export function Update() {
+  const [data, setData] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   function handleBackNavigate() {
     navigate(-1);
   }
+
+  useEffect(() => {
+    async function fetchDetails() {
+      try {
+        const response = await api.get(`/dishes/details/${id}`);
+        setData(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    fetchDetails();
+  }, []);
+  console.log(data);
 
   return (
     <Container>
@@ -27,6 +44,7 @@ export function Update() {
         menuIsOpen={menuIsOpen}
         onCloseMenu={() => setMenuIsOpen(false)}
       />
+
       <Content>
         <div id="backPage">
           <BackButtonIcon onClick={handleBackNavigate} />
@@ -48,33 +66,50 @@ export function Update() {
             <Input
               type="text"
               name="name"
+              value={data.name}
               id="name"
               placeholder="Ex.: Salada Ceasar"
             />
           </div>
 
-          <div id="category" className="label-style">
-            <label htmlFor="category">Categoria</label>
-            <SelectButton className="select" />
-          </div>
+          {data.category && (
+            <div id="category" className="label-style">
+              <label htmlFor="category">Categoria</label>
+              <SelectButton className="select" data={data.category} />
+            </div>
+          )}
 
           <div id="ingredients" className="label-style">
             <label htmlFor="ingredients">Ingredientes</label>
-            <div className="ingredients">
-              <IngredientItem value="Pimenta do reino" />
 
-              <IngredientItem isNew name="Adicionar" />
-            </div>
+            {data.ingredients && (
+              <div className="ingredients">
+                {data.ingredients.map((ingredient) => (
+                  <IngredientItem key={ingredient.id} value={ingredient.name} />
+                ))}
+
+                <IngredientItem isNew name="Adicionar" />
+              </div>
+            )}
           </div>
 
           <div id="description" className="label-style">
             <label htmlFor="description">Descrição</label>
-            <TextArea placeholder="Fale brevemente sobre o prato, seus ingredientes e composição" />
+            <TextArea
+              placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+              data={data.description}
+            />
           </div>
 
           <div id="price" className="label-style">
             <label htmlFor="price">Preço</label>
-            <Input type="text" name="price" id="price" placeholder="R$ 00,00" />
+            <Input
+              type="text"
+              name="price"
+              id="price"
+              placeholder="R$ 00,00"
+              value={data.price}
+            />
           </div>
 
           <div id="buttons">
