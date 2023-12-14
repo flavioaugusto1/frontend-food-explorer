@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Content, Form, BackButtonIcon } from "./style";
 
 import { Header } from "../../components/Header";
@@ -14,6 +15,12 @@ import { Footer } from "../../components/Footer";
 export function New() {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
+  const navigate = useNavigate();
+
+  function handleNavigate() {
+    navigate(-1);
+  }
+
   return (
     <Container>
       <Header receipts="0" onOpenMenu={() => setMenuIsOpen(true)} />
@@ -23,20 +30,22 @@ export function New() {
       />
       <Content>
         <div id="backPage">
-          <BackButtonIcon />
-          <ButtonText title="voltar" />
+          <BackButtonIcon onClick={handleNavigate} />
+          <ButtonText title="voltar" onClick={handleNavigate} />
         </div>
 
         <h1>Adicionar prato</h1>
 
         <Form>
-        <div id="image" className="label-style">
+          <div id="image" className="label-style">
             <label htmlFor="logo">Imagem do prato</label>
             <Input type="file" name="logo" id="logo" />
           </div>
 
           <div id="name-input" className="label-style">
-            <label htmlFor="name" id="name">Nome</label>
+            <label htmlFor="name" id="name">
+              Nome
+            </label>
             <Input
               type="text"
               name="name"

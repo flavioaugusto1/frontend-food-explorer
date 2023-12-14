@@ -24,8 +24,12 @@ export function Details() {
 
   const { user } = useAuth();
 
-  function handleNavigte() {
-    navigate("/");
+  function handleBackNavigte() {
+    navigate(-1);
+  }
+
+  function handleUpdateDishNavigate() {
+    navigate(`/update/${id}`);
   }
 
   useEffect(() => {
@@ -52,8 +56,8 @@ export function Details() {
       <Content>
         <div id="wrap">
           <section id="backPage">
-            <BackButtonIcon onClick={handleNavigte} />
-            <ButtonText title="voltar" onClick={handleNavigte} />
+            <BackButtonIcon onClick={handleBackNavigte} />
+            <ButtonText title="voltar" onClick={handleBackNavigte} />
           </section>
 
           {data && (
@@ -94,7 +98,10 @@ export function Details() {
                   )}
 
                   {[USER_ROLE.ADMIN].includes(user.role) && (
-                    <Button name="Editar prato" />
+                    <Button
+                      name="Editar prato"
+                      onClick={handleUpdateDishNavigate}
+                    />
                   )}
                 </div>
               </section>
