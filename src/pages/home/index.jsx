@@ -19,30 +19,13 @@ import { CardFood } from "../../components/CardFood";
 import { Footer } from "../../components/Footer";
 
 export function Home() {
-  const [mainDishes, setMainDishes] = useState([]);
-  const [drinks, setDrinks] = useState([]);
-  const [desserts, setDesserts] = useState([]);
+  const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
+
   const [receipt, setReceipt] = useState(0);
+
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    async function fetchDishes() {
-      try {
-        const dishes = await api.get("/dishes/all?search=prato_principal");
-        const drinks = await api.get("/dishes/all?search=bebidas");
-        const desserts = await api.get("/dishes/all?search=sobremesas");
-
-        setMainDishes(dishes.data);
-        setDrinks(drinks.data);
-        setDesserts(desserts.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-
-    fetchDishes();
-  }, []);
 
   function handleNavigateDetails(id) {
     navigate(`/details/${id}`);
@@ -51,6 +34,20 @@ export function Home() {
   function handleNavigateUpdate(id) {
     navigate(`/update/${id}`);
   }
+
+  useEffect(() => {
+    async function fetchDishes() {
+      try {
+        const response = await api.get(`/dishes/all?search=${search}`);
+
+        setData(response.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+
+    fetchDishes();
+  }, []);
 
   return (
     <Container>
@@ -73,101 +70,101 @@ export function Home() {
 
         <section id="meals">
           <h2>Refeições</h2>
-          {mainDishes && (
-            <Splide
-              className="dishes"
-              options={{
-                fixedWidth: 200,
-                gap: "1rem",
-                pagination: false,
-                breakpoints: {
-                  1024: {
-                    arrows: false,
-                  },
+          <Splide
+            className="dishes"
+            options={{
+              fixedWidth: 200,
+              gap: "1rem",
+              pagination: false,
+              breakpoints: {
+                1024: {
+                  arrows: false,
                 },
-              }}
-            >
-              {mainDishes.map((dish) => (
-                <SplideSlide key={dish.id}>
-                  <CardFood
-                    title={dish.name}
-                    description={dish.description}
-                    price={`R$ ${dish.price}`}
-                    numberOfDishes="01"
-                    className="card-food"
-                    onNavigateDetails={() => handleNavigateDetails(dish.id)}
-                    onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
-                  />
-                </SplideSlide>
-              ))}
-            </Splide>
-          )}
+              },
+            }}
+          >
+            {data.map(
+              (dish) =>
+                dish.category === "prato_principal" && (
+                  <SplideSlide key={dish.id}>
+                    <CardFood
+                      title={dish.name}
+                      description={dish.description}
+                      price={`R$ ${dish.price}`}
+                      className="card-food"
+                      onNavigateDetails={() => handleNavigateDetails(dish.id)}
+                      onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
+                    />
+                  </SplideSlide>
+                )
+            )}
+          </Splide>
         </section>
 
         <section id="drinks">
           <h2>Bebidas</h2>
-          {drinks && (
-            <Splide
-              className="dishes"
-              options={{
-                fixedWidth: 200,
-                gap: "1rem",
-                pagination: false,
-                breakpoints: {
-                  1024: {
-                    arrows: false,
-                  },
+          <Splide
+            className="dishes"
+            options={{
+              fixedWidth: 200,
+              gap: "1rem",
+              pagination: false,
+              breakpoints: {
+                1024: {
+                  arrows: false,
                 },
-              }}
-            >
-              {drinks.map((dish) => (
-                <SplideSlide key={dish.id}>
-                  <CardFood
-                    title={dish.name}
-                    description={dish.description}
-                    price={`R$ ${dish.price}`}
-                    numberOfDishes="01"
-                    className="card-food"
-                    onNavigateDetails={() => handleNavigateDetails(dish.id)}
-                    onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
-                  />
-                </SplideSlide>
-              ))}
-            </Splide>
-          )}
+              },
+            }}
+          >
+            {data.map(
+              (dish) =>
+                dish.category === "bebidas" && (
+                  <SplideSlide key={dish.id}>
+                    <CardFood
+                      title={dish.name}
+                      description={dish.description}
+                      price={`R$ ${dish.price}`}
+                      className="card-food"
+                      onNavigateDetails={() => handleNavigateDetails(dish.id)}
+                      onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
+                    />
+                  </SplideSlide>
+                )
+            )}
+          </Splide>
         </section>
 
         <section id="dessert">
           <h2>Sobremesas</h2>
-          {desserts && (
-            <Splide
-              className="dishes"
-              options={{
-                fixedWidth: 200,
-                gap: "1rem",
-                pagination: false,
-                breakpoints: {
-                  1024: {
-                    arrows: false,
-                  },
+          <Splide
+            className="dishes"
+            options={{
+              fixedWidth: 200,
+              gap: "1rem",
+              pagination: false,
+              breakpoints: {
+                1024: {
+                  arrows: false,
                 },
-              }}
-            >
-              {desserts.map((dish) => (
-                <SplideSlide key={dish.id}>
-                  <CardFood
-                    title={dish.name}
-                    description={dish.description}
-                    price={`R$ ${dish.price}`}
-                    numberOfDishes="01"
-                    className="card-food"
-                    onNavigateDetails={() => handleNavigateDetails(dish.id)}
-                    onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
-                  />
-                </SplideSlide>
-              ))}
-            </Splide>
-          )}
+              },
+            }}
+          >
+            {data.map(
+              (dish) =>
+                dish.category === "sobremesas" && (
+                  <SplideSlide key={dish.id}>
+                    <CardFood
+                      title={dish.name}
+                      description={dish.description}
+                      price={`R$ ${dish.price}`}
+                      className="card-food"
+                      onNavigateDetails={() => handleNavigateDetails(dish.id)}
+                      onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
+                    />
+                  </SplideSlide>
+                )
+            )}
+          </Splide>
         </section>
       </div>
 

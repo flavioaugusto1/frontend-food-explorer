@@ -1,9 +1,9 @@
 import { Container, MinusIcon, PlusIcon } from "./style";
 
-export function OrderDishes({ numberOfDishes, onAddItems }) {
+export function OrderDishes({ numberOfDishes, onAddItems, onDecreaseItem }) {
   return (
     <Container>
-      <MinusIcon />
+      <MinusIcon onClick={onDecreaseItem} />
       <span>{numberOfDishes}</span>
       <PlusIcon onClick={onAddItems} />
     </Container>

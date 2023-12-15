@@ -1,24 +1,41 @@
+import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
-import { Container, HeartIcon, PencilIcon } from "./style";
+import {
+  Container,
+  HeartIcon,
+  PencilIcon,
+  OrderDishes,
+  PlusIcon,
+  MinusIcon,
+} from "./style";
 
 import Dish from "../../assets/dish.png";
 
 import { Button } from "../Button";
-import { OrderDishes } from "../OrderDishes";
 
 export function CardFood({
   title,
   price,
   description,
-  numberOfDishes,
-  onAddItems,
-  addReceiptItems,
+  addItemsOnCart,
   onNavigateDetails,
   onNavigateUpdate,
   ...rest
 }) {
   const { user } = useAuth();
+  const [numberItem, setNumberItem] = useState(1);
+
+  function increasedItem() {
+    setNumberItem((prevState) => prevState + 1);
+  }
+
+  function decreasedItem() {
+    if (numberItem === 0) {
+      return;
+    }
+    setNumberItem((prevState) => prevState - 1);
+  }
 
   return (
     <Container {...rest}>
@@ -38,8 +55,12 @@ export function CardFood({
 
       {user.role === USER_ROLE.CUSTOMER && (
         <div id="buttons">
-          <OrderDishes numberOfDishes="01" />
-          <Button name="incluir" onClick={addReceiptItems} />
+          <OrderDishes>
+            <MinusIcon onClick={decreasedItem} />
+            <span>{numberItem}</span>
+            <PlusIcon onClick={increasedItem} />
+          </OrderDishes>
+          <Button name="incluir" onClick={addItemsOnCart} />
         </div>
       )}
     </Container>
