@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { api } from "../../services/api";
 import { Container } from "./style";
-import { useNavigate } from "react-router-dom";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
@@ -25,14 +24,9 @@ export function Home() {
   const [receipt, setReceipt] = useState(0);
 
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const navigate = useNavigate();
 
-  function handleNavigateDetails(id) {
-    navigate(`/details/${id}`);
-  }
-
-  function handleNavigateUpdate(id) {
-    navigate(`/update/${id}`);
+  function handleAddItemOnCart(value) {
+    setReceipt((prevState) => prevState + value);
   }
 
   useEffect(() => {
@@ -88,12 +82,8 @@ export function Home() {
                 dish.category === "prato_principal" && (
                   <SplideSlide key={dish.id}>
                     <CardFood
-                      title={dish.name}
-                      description={dish.description}
-                      price={`R$ ${dish.price}`}
-                      className="card-food"
-                      onNavigateDetails={() => handleNavigateDetails(dish.id)}
-                      onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
+                      data={dish}
+                      addItemsOnCart={handleAddItemOnCart}
                     />
                   </SplideSlide>
                 )
@@ -121,12 +111,8 @@ export function Home() {
                 dish.category === "bebidas" && (
                   <SplideSlide key={dish.id}>
                     <CardFood
-                      title={dish.name}
-                      description={dish.description}
-                      price={`R$ ${dish.price}`}
-                      className="card-food"
-                      onNavigateDetails={() => handleNavigateDetails(dish.id)}
-                      onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
+                      data={dish}
+                      addItemsOnCart={handleAddItemOnCart}
                     />
                   </SplideSlide>
                 )
@@ -154,12 +140,8 @@ export function Home() {
                 dish.category === "sobremesas" && (
                   <SplideSlide key={dish.id}>
                     <CardFood
-                      title={dish.name}
-                      description={dish.description}
-                      price={`R$ ${dish.price}`}
-                      className="card-food"
-                      onNavigateDetails={() => handleNavigateDetails(dish.id)}
-                      onNavigateUpdate={() => handleNavigateUpdate(dish.id)}
+                      data={dish}
+                      addItemsOnCart={handleAddItemOnCart}
                     />
                   </SplideSlide>
                 )
