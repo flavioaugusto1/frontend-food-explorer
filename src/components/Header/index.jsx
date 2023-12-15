@@ -27,8 +27,12 @@ export function Header({ receipts, onOpenMenu }) {
       <Brand id="brand" />
 
       <div id="receipt">
-        <span>{receipts}</span>
-        <ReceiptIcon />
+        {[USER_ROLE.CUSTOMER].includes(user.role) && (
+          <>
+            <span>{receipts}</span>
+            <ReceiptIcon />
+          </>
+        )}
       </div>
 
       <div id="input">
