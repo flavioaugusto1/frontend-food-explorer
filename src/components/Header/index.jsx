@@ -7,7 +7,7 @@ import { Brand } from "../Brand";
 import { Input } from "../Input";
 import { Button } from "../Button";
 
-export function Header({ receipts, onOpenMenu }) {
+export function Header({ receipts, onOpenMenu, searchDish }) {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
@@ -36,7 +36,10 @@ export function Header({ receipts, onOpenMenu }) {
       </div>
 
       <div id="input">
-        <Input placeholder="Busque por pratos ou ingredientes" />
+        <Input
+          placeholder="Busque por pratos ou ingredientes"
+          onChange={searchDish}
+        />
       </div>
 
       <div id="wrapButton">

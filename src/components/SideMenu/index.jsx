@@ -14,7 +14,7 @@ import { Input } from "../Input";
 import { ButtonText } from "../ButtonText";
 import { Footer } from "../Footer";
 
-export function SideMenu({ menuIsOpen, onCloseMenu }) {
+export function SideMenu({ menuIsOpen, onCloseMenu, searchDish }) {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
@@ -37,7 +37,11 @@ export function SideMenu({ menuIsOpen, onCloseMenu }) {
       <Content>
         <div id="search">
           <SearchIcon />
-          <Input type="text" placeholder="Busque por pratos ou ingredientes" />
+          <Input
+            type="text"
+            placeholder="Busque por pratos ou ingredientes"
+            onChange={searchDish}
+          />
         </div>
 
         <MenuList>

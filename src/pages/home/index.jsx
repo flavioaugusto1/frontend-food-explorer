@@ -41,14 +41,19 @@ export function Home() {
     }
 
     fetchDishes();
-  }, []);
+  }, [search]);
 
   return (
     <Container>
-      <Header receipts={receipt} onOpenMenu={() => setMenuIsOpen(true)} />
+      <Header
+        receipts={receipt}
+        searchDish={(e) => setSearch(e.target.value)}
+        onOpenMenu={() => setMenuIsOpen(true)}
+      />
       <SideMenu
         menuIsOpen={menuIsOpen}
         onCloseMenu={() => setMenuIsOpen(false)}
+        searchDish={(e) => setSearch(e.target.value)}
       />
 
       <div id="content">
