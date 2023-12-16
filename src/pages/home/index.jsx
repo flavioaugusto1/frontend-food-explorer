@@ -3,6 +3,7 @@ import { api } from "../../services/api";
 import { Container } from "./style";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { MagicMotion } from "react-magic-motion";
 import "@splidejs/react-splide/css";
 
 import "@splidejs/react-splide/css/skyblue";
@@ -86,10 +87,12 @@ export function Home() {
               (dish) =>
                 dish.category === "prato_principal" && (
                   <SplideSlide key={dish.id}>
-                    <CardFood
-                      data={dish}
-                      addItemsOnCart={handleAddItemOnCart}
-                    />
+                    <MagicMotion>
+                      <CardFood
+                        data={dish}
+                        addItemsOnCart={handleAddItemOnCart}
+                      />
+                    </MagicMotion>
                   </SplideSlide>
                 )
             )}
@@ -115,10 +118,12 @@ export function Home() {
               (dish) =>
                 dish.category === "bebidas" && (
                   <SplideSlide key={dish.id}>
-                    <CardFood
-                      data={dish}
-                      addItemsOnCart={handleAddItemOnCart}
-                    />
+                    <MagicMotion>
+                      <CardFood
+                        data={dish}
+                        addItemsOnCart={handleAddItemOnCart}
+                      />
+                    </MagicMotion>
                   </SplideSlide>
                 )
             )}
@@ -144,10 +149,12 @@ export function Home() {
               (dish) =>
                 dish.category === "sobremesas" && (
                   <SplideSlide key={dish.id}>
-                    <CardFood
-                      data={dish}
-                      addItemsOnCart={handleAddItemOnCart}
-                    />
+                    <MagicMotion>
+                      <CardFood
+                        data={dish}
+                        addItemsOnCart={handleAddItemOnCart}
+                      />
+                    </MagicMotion>
                   </SplideSlide>
                 )
             )}
