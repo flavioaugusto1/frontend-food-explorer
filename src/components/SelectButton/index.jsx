@@ -7,9 +7,9 @@ import {
   IconDown,
 } from "./style";
 
-export function SelectButton({ data }) {
+export function SelectButton({ data, selected }) {
   return (
-    <Select.Root defaultValue={data}>
+    <Select.Root defaultValue={data} onValueChange={(value) => selected(value)}>
       <SelectTrigger>
         <Select.Value placeholder={"Selecione a categoria"} />
         <Select.Icon>

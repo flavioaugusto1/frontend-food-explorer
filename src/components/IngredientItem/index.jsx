@@ -1,6 +1,13 @@
 import { Container, PlusIcon, CloseIcon } from "./style";
 
-export function IngredientItem({ isNew = false, value, ...rest }) {
+export function IngredientItem({
+  isNew = false,
+  value,
+  isNewIngredient,
+  addNewIngredient,
+  removeIngredient,
+  ...rest
+}) {
   return (
     <Container isNew={isNew}>
       <input
@@ -9,10 +16,15 @@ export function IngredientItem({ isNew = false, value, ...rest }) {
         readOnly={!isNew}
         {...rest}
         placeholder="Adicionar"
+        onChange={isNewIngredient}
       />
 
       <button {...rest} type="button">
-        {isNew ? <PlusIcon /> : <CloseIcon />}
+        {isNew ? (
+          <PlusIcon onClick={addNewIngredient} />
+        ) : (
+          <CloseIcon onClick={removeIngredient} />
+        )}
       </button>
     </Container>
   );
