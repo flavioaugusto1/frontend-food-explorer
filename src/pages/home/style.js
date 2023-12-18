@@ -151,7 +151,7 @@ export const Container = styled.div`
         .dishes {
           ul {
             display: flex;
-            gap: 4rem;            
+            gap: 1rem;            
           }
         }
 

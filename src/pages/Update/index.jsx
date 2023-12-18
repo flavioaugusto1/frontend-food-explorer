@@ -14,8 +14,16 @@ import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
 
 export function Update() {
-  const [data, setData] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+
+  const [ingredients, setIngredients] = useState([]);
+  const [newIngredient, setNewIngredient] = useState("");
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -23,11 +31,56 @@ export function Update() {
     navigate(-1);
   }
 
+  function handleAddIngredient() {
+    setIngredients((prevState) => [...prevState, newIngredient]);
+    setNewIngredient("");
+  }
+
+  function handleRemoveIngredient(ingredientDeleted) {
+    setIngredients((prevState) =>
+      prevState.filter((ingredient) => ingredient !== ingredientDeleted)
+    );
+  }
+
+  async function handleUpdateDish() {
+    try {
+      const response = await api.put(`/dishes/update/${id}`, {
+        name,
+        category,
+        ingredients,
+        price,
+        description,
+      });
+
+      alert("Prato atualizado com sucesso.");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function handleDeleteDish() {
+    try {
+      const response = await api.delete(`/dishes/delete/${id}`);
+      alert("Prato deletado com sucesso.");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     async function fetchDetails() {
       try {
         const response = await api.get(`/dishes/details/${id}`);
-        setData(response.data);
+        const ingredients = response.data.ingredients.map(
+          (ingredient) => ingredient.name
+        );
+        setName(response.data.name);
+        setCategory(response.data.category);
+        setPrice(response.data.price);
+        setDescription(response.data.description);
+        setIngredients(ingredients);
       } catch (error) {
         console.log(error.message);
       }
@@ -65,29 +118,44 @@ export function Update() {
             <Input
               type="text"
               name="name"
-              value={data.name}
+              value={name}
               id="name"
               placeholder="Ex.: Salada Ceasar"
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
 
-          {data.category && (
+          {category && (
             <div id="category" className="label-style">
               <label htmlFor="category">Categoria</label>
-              <SelectButton className="select" data={data.category} />
+              <SelectButton
+                className="select"
+                data={category}
+                selected={(category) => setCategory(category)}
+              />
             </div>
           )}
 
           <div id="ingredients" className="label-style">
             <label htmlFor="ingredients">Ingredientes</label>
 
-            {data.ingredients && (
+            {ingredients && (
               <div className="ingredients">
-                {data.ingredients.map((ingredient) => (
-                  <IngredientItem key={ingredient.id} value={ingredient.name} />
+                {ingredients.map((ingredient) => (
+                  <IngredientItem
+                    key={ingredient.id}
+                    value={ingredient}
+                    removeIngredient={() => handleRemoveIngredient(ingredient)}
+                  />
                 ))}
 
-                <IngredientItem isNew name="Adicionar" />
+                <IngredientItem
+                  isNew
+                  name="Adicionar"
+                  value={newIngredient}
+                  isNewIngredient={(e) => setNewIngredient(e.target.value)}
+                  addNewIngredient={handleAddIngredient}
+                />
               </div>
             )}
           </div>
@@ -96,7 +164,8 @@ export function Update() {
             <label htmlFor="description">Descrição</label>
             <TextArea
               placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
-              data={data.description}
+              data={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
 
@@ -107,13 +176,18 @@ export function Update() {
               name="price"
               id="price"
               placeholder="R$ 00,00"
-              value={data.price}
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
             />
           </div>
 
           <div id="buttons">
-            <Button name="Excluir prato" className="buttonDelete" />
-            <Button name="Salvar alterações" />
+            <Button
+              name="Excluir prato"
+              className="buttonDelete"
+              onClick={handleDeleteDish}
+            />
+            <Button name="Salvar alterações" onClick={handleUpdateDish} />
           </div>
         </Form>
       </Content>
