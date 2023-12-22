@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
-import { CaretLeft } from "@phosphor-icons/react";
+import { CaretLeft, UploadSimple } from "@phosphor-icons/react";
 
 export const Container = styled.div`
   width: 100%;
@@ -50,6 +50,41 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
+
+  #image {
+    .upload-image {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      background-color: ${({ theme }) => theme.COLORS.DARK_900};
+      color: ${({ theme }) => theme.COLORS.LIGHT_100};
+
+      border-radius: 8px;
+
+      > label {
+        padding: 1.6rem 4rem;
+        height: 4.8rem;
+
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+    }
+
+    #logo {
+      display: none;
+    }
+
+    > span {
+      font-family: "Roboto", sans-serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.6rem;
+
+      color: ${({ theme }) => theme.COLORS.LIGHT_400};
+      cursor: text;
+    }
+  }
 
   label {
     font-family: "Roboto", sans-serif;
@@ -152,3 +187,12 @@ export const BackButtonIcon = styled(CaretLeft).attrs(({ theme }) => ({
   size: "2.8rem",
   color: theme.COLORS.LIGHT_100,
 }))``;
+
+export const UploadIcon = styled(UploadSimple).attrs(({ theme }) => ({
+  size: "2.8rem",
+  color: theme.COLORS.LIGHT_100,
+}))`
+  position: absolute;
+  left: 0.8rem;
+  top: 0.8rem;
+`;

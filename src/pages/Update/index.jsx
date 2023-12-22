@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../services/api";
-import { Container, Content, Form, BackButtonIcon } from "./style";
+import { Container, Content, Form, BackButtonIcon, UploadIcon } from "./style";
 
 import { Header } from "../../components/Header";
 import { SideMenu } from "../../components/SideMenu";
@@ -107,8 +107,14 @@ export function Update() {
 
         <Form>
           <div id="image" className="label-style">
-            <label htmlFor="logo">Imagem do prato</label>
-            <Input type="file" name="logo" id="logo" />
+            <span>Imagem do prato</span>
+            <div className="upload-image">
+              <label htmlFor="logo">
+                <UploadIcon />
+                Selecione a imagem
+              </label>
+              <Input type="file" name="logo" id="logo" />
+            </div>
           </div>
 
           <div id="name-input" className="label-style">
