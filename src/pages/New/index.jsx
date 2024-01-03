@@ -22,7 +22,10 @@ export function New() {
   const [price, serPrice] = useState("");
 
   const [ingredients, setIngredients] = useState([]);
-  const [newIngredient, setNewIngredient] = useState("");
+  const [newIngredient, setNewIngredient] = useState(null);
+
+  const [logo, setLogo] = useState(null);
+  const [logoNameUpload, setLogoNameUpload] = useState("Selecione a imagem");
 
   const navigate = useNavigate();
 
@@ -41,9 +44,30 @@ export function New() {
     navigate(-1);
   }
 
-  async function handleNewDish() {
-    console.log(ingredients);
+  async function handleNewDish(logoFile) {
     try {
+      if (logoFile) {
+        const logoFileForm = new FormData();
+        logoFileForm.append("image", logoFile);
+
+        const { data } = await api.post("/dishes/register", {
+          name,
+          category,
+          description,
+          ingredients,
+          price,
+        });
+
+        const dish_id = data.id;
+
+        logoFileForm.append("id", dish_id);
+        await api.patch(`/dishes/image/${dish_id}`, logoFileForm);
+
+        alert("Prato cadastrado com sucesso");
+        navigate("/");
+        return;
+      }
+
       const response = await api.post("/dishes/register", {
         name,
         category,
@@ -57,6 +81,14 @@ export function New() {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function handleChangeLogo(event) {
+    const file = event.target.files[0];
+    setLogo(file);
+
+    const logoName = file.name;
+    setLogoNameUpload(logoName);
   }
 
   return (
@@ -80,9 +112,14 @@ export function New() {
             <div className="upload-image">
               <label htmlFor="logo">
                 <UploadIcon />
-                Selecione a imagem
+                {logoNameUpload}
               </label>
-              <Input type="file" name="logo" id="logo" />
+              <Input
+                type="file"
+                name="logo"
+                id="logo"
+                onChange={handleChangeLogo}
+              />
             </div>
           </div>
 
@@ -148,7 +185,10 @@ export function New() {
           </div>
 
           <div id="buttons">
-            <Button name="Salvar alterações" onClick={handleNewDish} />
+            <Button
+              name="Salvar alterações"
+              onClick={() => handleNewDish(logo)}
+            />
           </div>
         </Form>
       </Content>

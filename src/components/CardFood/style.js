@@ -26,6 +26,9 @@ export const Container = styled.div`
 
   > img {
     cursor: pointer;
+    width: 17.6rem;
+    height: 17.6rem;
+    border-radius: 50%;
   }
 
   #titleDish {

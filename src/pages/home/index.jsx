@@ -90,6 +90,7 @@ export function Home() {
                     <MagicMotion>
                       <CardFood
                         data={dish}
+                        imgDish={`${api.defaults.baseURL}/files/${dish.image}`}
                         addItemsOnCart={handleAddItemOnCart}
                       />
                     </MagicMotion>
@@ -121,6 +122,7 @@ export function Home() {
                     <MagicMotion>
                       <CardFood
                         data={dish}
+                        imgDish={`${api.defaults.baseURL}/files/${dish.image}`}
                         addItemsOnCart={handleAddItemOnCart}
                       />
                     </MagicMotion>
@@ -152,6 +154,7 @@ export function Home() {
                     <MagicMotion>
                       <CardFood
                         data={dish}
+                        imgDish={`${api.defaults.baseURL}/files/${dish.image}`}
                         addItemsOnCart={handleAddItemOnCart}
                       />
                     </MagicMotion>

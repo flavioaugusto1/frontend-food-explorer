@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 import { useNavigate } from "react-router-dom";
@@ -16,12 +17,14 @@ import Dish from "../../assets/dish.png";
 
 import { Button } from "../Button";
 
-export function CardFood({ data, addItemsOnCart, ...rest }) {
+export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
   const { user } = useAuth();
   const [numberItem, setNumberItem] = useState(1);
   const [price, setPrice] = useState(data.price);
+  const [image, setImage] = useState(null);
   const initialPrice = data.price;
 
+  console.log(imgDish);
   const navigate = useNavigate();
 
   function increasedItem() {
@@ -53,7 +56,7 @@ export function CardFood({ data, addItemsOnCart, ...rest }) {
       {[USER_ROLE.CUSTOMER].includes(user.role) && <HeartIcon />}
 
       <img
-        src={Dish}
+        src={imgDish}
         alt="Imagem de uma salada"
         onClick={handleNavigateDetails}
       />
