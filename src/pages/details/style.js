@@ -42,6 +42,13 @@ export const Content = styled.section`
     #logo-product {
       display: flex;
       justify-content: center;
+
+      > img {
+        border-radius: 50%;
+        width: clamp(29rem, 22.143rem + 14.286vw, 39rem);
+        height: clamp(29rem, 22.143rem + 14.286vw, 39rem);
+        object-fit: cover;
+      }
     }
 
     #description-product {
@@ -126,13 +133,6 @@ export const Content = styled.section`
       gap: 4.7rem;
 
       margin-top: 4.2rem;
-
-      #logo-product {
-        img {
-          width: 40rem;
-          height: 40rem;
-        }
-      }
 
       #description-product {
         display: block;

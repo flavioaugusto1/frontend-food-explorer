@@ -63,7 +63,10 @@ export function Details() {
           {data && (
             <section id="content-product">
               <div id="logo-product">
-                <img src={Dish} alt="imagem de salada" />
+                <img
+                  src={`${api.defaults.baseURL}/files/${data.image}`}
+                  alt="imagem de salada"
+                />
               </div>
 
               <section id="description-product">

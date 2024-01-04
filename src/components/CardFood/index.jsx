@@ -21,10 +21,8 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
   const { user } = useAuth();
   const [numberItem, setNumberItem] = useState(1);
   const [price, setPrice] = useState(data.price);
-  const [image, setImage] = useState(null);
   const initialPrice = data.price;
 
-  console.log(imgDish);
   const navigate = useNavigate();
 
   function increasedItem() {
