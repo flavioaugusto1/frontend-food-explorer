@@ -24,6 +24,9 @@ export function Update() {
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
 
+  const [logo, setLogo] = useState(null);
+  const [logoNameUpload, setLogoNameUpload] = useState(null);
+
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -44,6 +47,25 @@ export function Update() {
 
   async function handleUpdateDish() {
     try {
+      if (logo) {
+        const uploadFileForm = new FormData();
+        uploadFileForm.append("image", logo);
+
+        const response = await api.put(`/dishes/update/${id}`, {
+          name,
+          category,
+          ingredients,
+          price,
+          description,
+        });
+
+        uploadFileForm.append("id", id);
+        await api.patch(`/dishes/image/${id}`, uploadFileForm);
+        alert("Prato atualizado com sucesso.");
+        navigate("/");
+        return;
+      }
+
       const response = await api.put(`/dishes/update/${id}`, {
         name,
         category,
@@ -57,6 +79,14 @@ export function Update() {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function handleChangeLogo(event) {
+    const file = event.target.files[0];
+    setLogo(file);
+
+    const logoName = file.name;
+    setLogoNameUpload(logoName);
   }
 
   async function handleDeleteDish() {
@@ -81,6 +111,7 @@ export function Update() {
         setPrice(response.data.price);
         setDescription(response.data.description);
         setIngredients(ingredients);
+        setLogoNameUpload(response.data.image);
       } catch (error) {
         console.log(error.message);
       }
@@ -111,9 +142,14 @@ export function Update() {
             <div className="upload-image">
               <label htmlFor="logo">
                 <UploadIcon />
-                Selecione a imagem
+                {logoNameUpload}
               </label>
-              <Input type="file" name="logo" id="logo" />
+              <Input
+                type="file"
+                name="logo"
+                id="logo"
+                onChange={handleChangeLogo}
+              />
             </div>
           </div>
 

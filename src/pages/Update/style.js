@@ -63,6 +63,7 @@ export const Form = styled.form`
       border-radius: 8px;
 
       > label {
+        width: 100%;
         padding: 1.6rem 4rem;
         height: 4.8rem;
 
