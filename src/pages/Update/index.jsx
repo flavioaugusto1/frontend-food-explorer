@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../services/api";
+
+import { toastNotify } from "../../services/notifyStatus";
+import "react-toastify/dist/ReactToastify.css";
+
 import { Container, Content, Form, BackButtonIcon, UploadIcon } from "./style";
 
 import { Header } from "../../components/Header";
@@ -61,7 +65,8 @@ export function Update() {
 
         uploadFileForm.append("id", id);
         await api.patch(`/dishes/image/${id}`, uploadFileForm);
-        alert("Prato atualizado com sucesso.");
+
+        toastNotify.success("Prato atualizado com sucesso!");
         navigate("/");
         return;
       }
@@ -74,10 +79,11 @@ export function Update() {
         description,
       });
 
-      alert("Prato atualizado com sucesso.");
+      toastNotify.success("Prato atualizado com sucesso!");
+
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toastNotify.error("Não foi possível atualizar o prato.");
     }
   }
 
@@ -92,10 +98,10 @@ export function Update() {
   async function handleDeleteDish() {
     try {
       const response = await api.delete(`/dishes/delete/${id}`);
-      alert("Prato deletado com sucesso.");
+      toastNotify.success("Prato deletado com sucesso!");
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toastNotify.error("Não foi possível deletar o prato.");
     }
   }
 

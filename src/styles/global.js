@@ -1,4 +1,5 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, styled } from "styled-components";
+import { ToastContainer } from "react-toastify";
 
 export default createGlobalStyle`
   *{
@@ -16,4 +17,8 @@ export default createGlobalStyle`
     outline: none;
   }
 
+`;
+
+export const ToastStyled = styled(ToastContainer)`
+  font-size: 1.6rem;
 `;

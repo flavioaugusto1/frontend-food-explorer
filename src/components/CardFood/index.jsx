@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 import { useNavigate } from "react-router-dom";
@@ -12,8 +11,6 @@ import {
   PlusIcon,
   MinusIcon,
 } from "./style";
-
-import Dish from "../../assets/dish.png";
 
 import { Button } from "../Button";
 

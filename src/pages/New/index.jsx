@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { api } from "../../services/api";
+
+import { toastNotify } from "../../services/notifyStatus";
+import "react-toastify/dist/ReactToastify.css";
+
 import { useNavigate } from "react-router-dom";
 import { Container, Content, Form, BackButtonIcon, UploadIcon } from "./style";
 
@@ -63,7 +67,8 @@ export function New() {
         logoFileForm.append("id", dish_id);
         await api.patch(`/dishes/image/${dish_id}`, logoFileForm);
 
-        alert("Prato cadastrado com sucesso");
+        toastNotify.success("Prato cadastrado com sucesso");
+
         navigate("/");
         return;
       }
@@ -76,10 +81,11 @@ export function New() {
         price,
       });
 
-      alert(response.data.message);
+      toastNotify.success("Prato cadastrado com sucesso");
+
       navigate("/");
     } catch (error) {
-      console.log(error);
+      toastNotify.error("Não foi possível cadastrado o prato.")
     }
   }
 
@@ -192,7 +198,6 @@ export function New() {
           </div>
         </Form>
       </Content>
-
       <Footer />
     </Container>
   );
