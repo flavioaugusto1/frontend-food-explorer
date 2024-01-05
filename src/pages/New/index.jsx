@@ -49,16 +49,21 @@ export function New() {
   }
 
   async function handleNewDish(logoFile) {
-    if (
-      !logoFile ||
-      !name ||
-      !category ||
-      !ingredients ||
-      !price ||
-      !description
-    ) {
+    if (!logoFile || !name || !category || !price || !description) {
       toastNotify.error(
         "Você deixou campos em branco. Por gentileza preencher os campos faltantes."
+      );
+      return;
+    }
+
+    if (ingredients.length < 1) {
+      toastNotify.error("Insira pelo menos um ingrediente.");
+      return;
+    }
+
+    if (newIngredient) {
+      toastNotify.error(
+        'Você deixou o novo ingrediente preenchido e esqueceu de adicionar. Clique no "+" para adicionar.'
       );
       return;
     }
@@ -98,6 +103,7 @@ export function New() {
       toastNotify.success("Prato cadastrado com sucesso");
 
       navigate("/");
+      return;
     } catch (error) {
       toastNotify.error("Não foi possível cadastrado o prato.");
     }

@@ -8,7 +8,7 @@ export const toastNotify = {
     });
   },
   error: (message) => {
-    toast.success(`${message}`, {
+    toast.error(`${message}`, {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 4000,
     });
