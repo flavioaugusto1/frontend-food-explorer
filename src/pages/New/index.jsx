@@ -49,6 +49,20 @@ export function New() {
   }
 
   async function handleNewDish(logoFile) {
+    if (
+      !logoFile ||
+      !name ||
+      !category ||
+      !ingredients ||
+      !price ||
+      !description
+    ) {
+      toastNotify.error(
+        "Você deixou campos em branco. Por gentileza preencher os campos faltantes."
+      );
+      return;
+    }
+
     try {
       if (logoFile) {
         const logoFileForm = new FormData();
@@ -85,7 +99,7 @@ export function New() {
 
       navigate("/");
     } catch (error) {
-      toastNotify.error("Não foi possível cadastrado o prato.")
+      toastNotify.error("Não foi possível cadastrado o prato.");
     }
   }
 
