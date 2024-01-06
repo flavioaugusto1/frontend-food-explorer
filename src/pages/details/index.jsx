@@ -6,7 +6,6 @@ import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 
 import { Container, Content, BackButtonIcon } from "./style";
-import Dish from "../../assets/dish_264.png";
 
 import { Header } from "../../components/Header";
 import { SideMenu } from "../../components/SideMenu";
@@ -19,6 +18,8 @@ import { Footer } from "../../components/Footer";
 export function Details() {
   const [data, setData] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [price, setPrice] = useState(null);
+
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -32,16 +33,27 @@ export function Details() {
     navigate(`/update/${id}`);
   }
 
+  function formatPrice(price) {
+    const formatedPrice = price.toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
+    setPrice(formatedPrice);
+  }
+
   useEffect(() => {
     async function fetchDetailsDish() {
       try {
         const response = await api.get(`/dishes/details/${id}`);
         setData(response.data);
+        formatPrice(response.data.price);
       } catch (error) {
         console.log(error.message);
       }
     }
-
     fetchDetailsDish();
   }, []);
 
@@ -89,12 +101,12 @@ export function Details() {
                     <>
                       <OrderDishes numberOfDishes="01" />
                       <Button
-                        name={`pedir ∙ R$ ${data.price}`}
+                        name={`pedir ∙ ${price}`}
                         icon
                         id="addReceiptMobile"
                       />
                       <Button
-                        name={`incluir ∙ R$ ${data.price}`}
+                        name={`incluir ∙ ${price}`}
                         id="addReceiptDesktop"
                       />
                     </>
