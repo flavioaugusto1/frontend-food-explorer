@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 import { useNavigate } from "react-router-dom";
@@ -51,6 +51,17 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
     return;
   }
 
+  useEffect(() => {
+    const formatedPrice = price.toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
+    setPrice(formatedPrice);
+  }, []);
+
   return (
     <Container {...rest}>
       {[USER_ROLE.ADMIN].includes(user.role) && (
@@ -71,7 +82,7 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
       <span id="descriptionDish" onClick={handleNavigateDetails}>
         {data.description}
       </span>
-      <div id="price">{`R$ ${price}`}</div>
+      <div id="price">{price}</div>
 
       {user.role === USER_ROLE.CUSTOMER && (
         <div id="buttons">
