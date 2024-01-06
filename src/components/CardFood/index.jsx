@@ -17,6 +17,9 @@ import { Button } from "../Button";
 export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
   const { user } = useAuth();
   const [numberItem, setNumberItem] = useState(1);
+
+  const [favorited, setFavorited] = useState(false);
+
   const [price, setPrice] = useState(data.price);
   const initialPrice = data.price;
 
@@ -43,12 +46,19 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
     navigate(`/update/${data.id}`);
   }
 
+  function handleFavorited() {
+    const isFavorited = favorited ? setFavorited(false) : setFavorited(true);
+    return;
+  }
+
   return (
     <Container {...rest}>
       {[USER_ROLE.ADMIN].includes(user.role) && (
         <PencilIcon onClick={handleNavigateUpdate} />
       )}
-      {[USER_ROLE.CUSTOMER].includes(user.role) && <HeartIcon />}
+      {[USER_ROLE.CUSTOMER].includes(user.role) && (
+        <HeartIcon isFavorited={favorited} onClick={handleFavorited} />
+      )}
 
       <img
         src={imgDish}

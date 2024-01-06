@@ -76,10 +76,13 @@ export const Container = styled.div`
   }
 `;
 
-export const HeartIcon = styled(HeartStraight).attrs(({ theme }) => ({
-  size: 24,
-  color: theme.COLORS.LIGHT_100,
-}))`
+export const HeartIcon = styled(HeartStraight).attrs(
+  ({ theme, isFavorited }) => ({
+    size: 24,
+    color: isFavorited ? theme.COLORS.TOMATO_300 : theme.COLORS.LIGHT_100,
+    weight: isFavorited ? "fill" : "regular",
+  })
+)`
   top: 1.6rem;
   right: 1.6rem;
   position: absolute;
