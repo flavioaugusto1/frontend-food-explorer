@@ -69,36 +69,21 @@ export function New() {
     }
 
     try {
-      if (logoFile) {
-        const logoFileForm = new FormData();
-        logoFileForm.append("image", logoFile);
+      const logoFileForm = new FormData();
+      logoFileForm.append("image", logoFile);
 
-        const { data } = await api.post("/dishes/register", {
-          name,
-          category,
-          description,
-          ingredients,
-          price,
-        });
-
-        const dish_id = data.id;
-
-        logoFileForm.append("id", dish_id);
-        await api.patch(`/dishes/image/${dish_id}`, logoFileForm);
-
-        toastNotify.success("Prato cadastrado com sucesso");
-
-        navigate("/");
-        return;
-      }
-
-      const response = await api.post("/dishes/register", {
+      const { data } = await api.post("/dishes/register", {
         name,
         category,
         description,
         ingredients,
         price,
       });
+
+      const dish_id = data.id;
+
+      logoFileForm.append("id", dish_id);
+      await api.patch(`/dishes/image/${dish_id}`, logoFileForm);
 
       toastNotify.success("Prato cadastrado com sucesso");
 
