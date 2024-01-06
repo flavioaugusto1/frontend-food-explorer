@@ -21,6 +21,7 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
   const [favorited, setFavorited] = useState(false);
 
   const [price, setPrice] = useState(data.price);
+  const [showPrice, setShowPrice] = useState(data.price);
   const initialPrice = data.price;
 
   const navigate = useNavigate();
@@ -38,6 +39,17 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
     setPrice((prevState) => prevState - initialPrice);
   }
 
+  function formatPrice(price) {
+    const formatedPrice = price.toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
+    setShowPrice(formatedPrice);
+  }
+
   function handleNavigateDetails() {
     navigate(`/details/${data.id}`);
   }
@@ -52,15 +64,8 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
   }
 
   useEffect(() => {
-    const formatedPrice = price.toLocaleString("pt-br", {
-      style: "currency",
-      currency: "BRL",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-
-    setPrice(formatedPrice);
-  }, []);
+    formatPrice(price);
+  }, [price]);
 
   return (
     <Container {...rest}>
@@ -82,7 +87,7 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
       <span id="descriptionDish" onClick={handleNavigateDetails}>
         {data.description}
       </span>
-      <div id="price">{price}</div>
+      <div id="price">{showPrice}</div>
 
       {user.role === USER_ROLE.CUSTOMER && (
         <div id="buttons">
