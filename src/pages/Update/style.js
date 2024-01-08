@@ -64,11 +64,13 @@ export const Form = styled.form`
 
       > label {
         width: 100%;
+        overflow-x: auto;
         padding: 1.6rem 4rem;
         height: 4.8rem;
-
         font-size: 1.2rem;
         cursor: pointer;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     }
 
