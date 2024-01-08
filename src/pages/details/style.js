@@ -25,6 +25,8 @@ export const Content = styled.section`
     flex-direction: column;
     justify-content: center;
 
+    padding: 1.2rem;
+
     #backPage {
       display: flex;
       align-items: center;
@@ -60,7 +62,7 @@ export const Content = styled.section`
 
       h1 {
         font-family: "Poppins", sans-serif;
-        font-size: 2.7rem;
+        font-size: 2.4rem;
         font-weight: 500;
         line-height: 3.7rem;
 
@@ -75,7 +77,7 @@ export const Content = styled.section`
         font-weight: 400;
         line-height: 2.2rem;
 
-        text-align: center;
+        text-align: justify;
         color: ${({ theme }) => theme.COLORS.LIGHT_300};
       }
 
@@ -115,7 +117,7 @@ export const Content = styled.section`
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
     width: 100%;
-    padding: 0 12.2rem;
+    padding: 0 7.2rem;
     margin-top: 3.2rem;
 
     display: flex;
@@ -138,13 +140,13 @@ export const Content = styled.section`
         display: block;
 
         h1 {
-          font-size: 4rem;
+          font-size: 3.4rem;
           font-weight: 500;
           line-height: 5.6rem;
         }
 
         p {
-          font-size: 2rem;
+          font-size: 1.6rem;
           line-height: 3.3rem;
 
           margin: 2.4rem 0;
