@@ -18,7 +18,13 @@ import { Footer } from "../../components/Footer";
 export function Details() {
   const [data, setData] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const [receipt, setReceipt] = useState(0);
+
   const [price, setPrice] = useState(null);
+  const [showPrice, setShowPrice] = useState(price);
+  const initialPrice = data.price;
+
+  const [numberItem, setNumberItem] = useState(1);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -41,7 +47,24 @@ export function Details() {
       maximumFractionDigits: 2,
     });
 
-    setPrice(formatedPrice);
+    setShowPrice(formatedPrice);
+  }
+
+  async function increasedItem() {
+    setNumberItem((prevState) => prevState + 1);
+    setPrice((prevState) => prevState + initialPrice);
+  }
+
+  function decreasedItem() {
+    if (numberItem === 1) {
+      return;
+    }
+    setNumberItem((prevState) => prevState - 1);
+    setPrice((prevState) => prevState - initialPrice);
+  }
+
+  function handleAddItemOnCart(value) {
+    setReceipt((prevState) => prevState + value);
   }
 
   useEffect(() => {
@@ -49,7 +72,7 @@ export function Details() {
       try {
         const response = await api.get(`/dishes/details/${id}`);
         setData(response.data);
-        formatPrice(response.data.price);
+        setPrice(response.data.price);
       } catch (error) {
         console.log(error.message);
       }
@@ -57,9 +80,17 @@ export function Details() {
     fetchDetailsDish();
   }, []);
 
+  useEffect(() => {
+    if (price) {
+      formatPrice(price);
+    }
+
+    return;
+  }, [price]);
+
   return (
     <Container>
-      <Header receipts="0" onOpenMenu={() => setMenuIsOpen(true)} />
+      <Header receipts={receipt} onOpenMenu={() => setMenuIsOpen(true)} />
       <SideMenu
         menuIsOpen={menuIsOpen}
         onCloseMenu={() => setMenuIsOpen(false)}
@@ -99,15 +130,21 @@ export function Details() {
                 <div id="buttons">
                   {[USER_ROLE.CUSTOMER].includes(user.role) && (
                     <>
-                      <OrderDishes numberOfDishes="01" />
-                      <Button
-                        name={`pedir ∙ ${price}`}
-                        icon
-                        id="addReceiptMobile"
+                      <OrderDishes
+                        numberOfDishes={numberItem}
+                        onAddItems={increasedItem}
+                        onDecreaseItem={decreasedItem}
                       />
                       <Button
-                        name={`incluir ∙ ${price}`}
+                        name={`pedir ∙ ${showPrice}`}
+                        icon
+                        id="addReceiptMobile"
+                        onClick={() => handleAddItemOnCart(numberItem)}
+                      />
+                      <Button
+                        name={`incluir ∙ ${showPrice}`}
                         id="addReceiptDesktop"
+                        onClick={() => handleAddItemOnCart(numberItem)}
                       />
                     </>
                   )}
