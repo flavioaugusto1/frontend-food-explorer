@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
 import { useNavigate } from "react-router-dom";
+import { toastNotify } from "../../services/notifyStatus";
 
 import {
   Container,
@@ -27,6 +28,10 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
   const navigate = useNavigate();
 
   function increasedItem() {
+    if (numberItem === 20) {
+      toastNotify.warn("O máximo de itens é 20");
+      return;
+    }
     setNumberItem((prevState) => prevState + 1);
     setPrice((prevState) => prevState + initialPrice);
   }
