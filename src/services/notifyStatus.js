@@ -13,4 +13,10 @@ export const toastNotify = {
       autoClose: 4000,
     });
   },
+  warn: (message) => {
+    toast.warn(`${message}`, {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 4000,
+    });
+  },
 };

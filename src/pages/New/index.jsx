@@ -11,6 +11,7 @@ import { Header } from "../../components/Header";
 import { SideMenu } from "../../components/SideMenu";
 import { ButtonText } from "../../components/ButtonText";
 import { Input } from "../../components/Input";
+import { InputMasked } from "../../components/InputMasked";
 import { SelectButton } from "../../components/SelectButton";
 import { IngredientItem } from "../../components/IngredientItem";
 import { TextArea } from "../../components/TextArea";
@@ -23,7 +24,7 @@ export function New() {
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [price, serPrice] = useState("");
+  const [price, setPrice] = useState("");
 
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState(null);
@@ -69,6 +70,7 @@ export function New() {
     }
 
     try {
+      const formatPrice = price.replace(",", ".");
       const logoFileForm = new FormData();
       logoFileForm.append("image", logoFile);
 
@@ -77,7 +79,7 @@ export function New() {
         category,
         description,
         ingredients,
-        price,
+        price: formatPrice,
       });
 
       const dish_id = data.id;
@@ -184,14 +186,14 @@ export function New() {
             />
           </div>
 
-          <div id="price" className="label-style">
+          <div className="label-style">
             <label htmlFor="price">Preço</label>
-            <Input
-              type="text"
-              name="price"
-              id="price"
+            <InputMasked
+              format="##,##"
+              value={price}
               placeholder="R$ 00,00"
-              onChange={(e) => serPrice(e.target.value)}
+              id="price"
+              onChange={(e) => setPrice(e.target.value)}
             />
           </div>
 

@@ -11,6 +11,7 @@ import { Header } from "../../components/Header";
 import { SideMenu } from "../../components/SideMenu";
 import { ButtonText } from "../../components/ButtonText";
 import { Input } from "../../components/Input";
+import { InputMasked } from "../../components/InputMasked";
 import { SelectButton } from "../../components/SelectButton";
 import { IngredientItem } from "../../components/IngredientItem";
 import { TextArea } from "../../components/TextArea";
@@ -51,6 +52,8 @@ export function Update() {
 
   async function handleUpdateDish() {
     try {
+      const formatPrice = Number(price.replace(",", "."));
+      console.log(formatPrice);
       if (logo) {
         const uploadFileForm = new FormData();
         uploadFileForm.append("image", logo);
@@ -59,7 +62,7 @@ export function Update() {
           name,
           category,
           ingredients,
-          price,
+          price: formatPrice,
           description,
         });
 
@@ -75,7 +78,7 @@ export function Update() {
         name,
         category,
         ingredients,
-        price,
+        price: formatPrice,
         description,
       });
 
@@ -112,9 +115,12 @@ export function Update() {
         const ingredients = response.data.ingredients.map(
           (ingredient) => ingredient.name
         );
+        const catchPrice = String(response.data.price);
+        const formatPrice = catchPrice.replace(".", ",");
+
         setName(response.data.name);
         setCategory(response.data.category);
-        setPrice(response.data.price);
+        setPrice(formatPrice);
         setDescription(response.data.description);
         setIngredients(ingredients);
         setLogoNameUpload(response.data.image);
@@ -125,6 +131,8 @@ export function Update() {
 
     fetchDetails();
   }, []);
+
+  console.log(price);
 
   return (
     <Container>
@@ -219,12 +227,11 @@ export function Update() {
 
           <div id="price" className="label-style">
             <label htmlFor="price">Preço</label>
-            <Input
-              type="text"
-              name="price"
-              id="price"
-              placeholder="R$ 00,00"
+            <InputMasked
+              format="##,##"
               value={price}
+              placeholder="R$ 00,00"
+              id="price"
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
