@@ -38,6 +38,7 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
 
   function decreasedItem() {
     if (numberItem === 1) {
+      toastNotify.warn("O mínimo de itens é 1");
       return;
     }
     setNumberItem((prevState) => prevState - 1);

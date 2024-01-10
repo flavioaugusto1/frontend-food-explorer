@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
+import { toastNotify } from "../../services/notifyStatus";
 
 import { useAuth } from "../../hooks/auth";
 import { USER_ROLE } from "../../utils/roles";
@@ -51,12 +52,17 @@ export function Details() {
   }
 
   async function increasedItem() {
+    if (numberItem === 20) {
+      toastNotify.warn("O máximo de itens é 20");
+      return;
+    }
     setNumberItem((prevState) => prevState + 1);
     setPrice((prevState) => prevState + initialPrice);
   }
 
   function decreasedItem() {
     if (numberItem === 1) {
+      toastNotify.warn("O mínimo de itens é 1");
       return;
     }
     setNumberItem((prevState) => prevState - 1);
