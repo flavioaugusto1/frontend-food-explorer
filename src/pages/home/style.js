@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
-  height: 100%;
+  height: 100vh;
   position: relative;
   display: grid;
   align-items: center;
   justify-items: center;
+  align-content: space-between;
 
   #content {
     max-width: 48rem;

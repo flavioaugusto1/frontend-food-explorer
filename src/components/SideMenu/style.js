@@ -48,7 +48,7 @@ export const Content = styled.section`
   align-items: center;
   background-color: ${({ theme }) => theme.COLORS.DARK_400};
 
-  padding: 2.5rem;
+  padding: 2rem;
 
   #search {
     display: flex;
@@ -63,7 +63,7 @@ export const Content = styled.section`
 
     > div {
       input {
-        width: 38rem;
+        width: 31rem;
         &::placeholder {
           font-size: 1.8rem;
           font-family: "Roboto", sans-serif;

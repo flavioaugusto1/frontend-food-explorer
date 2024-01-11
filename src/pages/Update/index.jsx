@@ -108,6 +108,17 @@ export function Update() {
     }
   }
 
+  function formatPrice(price) {
+    const formatedPrice = price.toLocaleString("pt-br", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
+    setPrice(formatedPrice);
+  }
+
   useEffect(() => {
     async function fetchDetails() {
       try {
@@ -131,8 +142,6 @@ export function Update() {
 
     fetchDetails();
   }, []);
-
-  console.log(price);
 
   return (
     <Container>
