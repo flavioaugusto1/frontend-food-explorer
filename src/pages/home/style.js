@@ -12,6 +12,17 @@ export const Container = styled.div`
   justify-items: center;
   align-content: space-between;
 
+  header {
+    animation-name: topDown;
+    animation-duration: 2s;
+
+    @keyframes topDown {
+      0% {
+        transform: translateY(-200%);
+      }
+    }
+  }
+
   #content {
     max-width: 48rem;
     height: 100%;
@@ -19,6 +30,13 @@ export const Container = styled.div`
 
     #wrap {
       padding: 2rem;
+
+      animation-name: appears;
+      animation-duration: 1s;
+      animation-delay: 1s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: backwards;
+
       #infos {
         max-width: 93rem;
         position: relative;
@@ -73,6 +91,12 @@ export const Container = styled.div`
       max-width: 100%;
       padding: 1.6rem;
 
+      animation-name: appears;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      animation-delay: 2s;
+      animation-fill-mode: backwards;
+
       > h2 {
         font-family: "Poppins", sans-serif;
         font-size: 1.8rem;
@@ -96,6 +120,12 @@ export const Container = styled.div`
 
     #meals {
       margin-top: 6.2rem;
+    }
+  }
+
+  @keyframes appears {
+    0% {
+      opacity: 0;
     }
   }
 
