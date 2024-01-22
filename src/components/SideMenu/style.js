@@ -3,11 +3,9 @@ import { X, MagnifyingGlass } from "@phosphor-icons/react";
 
 export const Container = styled.aside`
   width: 100%;
-  height: 100vh;
-  z-index: 1;
+  height: 100%;
 
   display: grid;
-  grid-template-columns: auto;
   grid-template-rows: max-content 1fr max-content;
 
   position: absolute;
@@ -62,8 +60,8 @@ export const Content = styled.section`
     margin-bottom: 3.6rem;
 
     > div {
+      flex: 1;
       input {
-        width: 31rem;
         &::placeholder {
           font-size: 1.8rem;
           font-family: "Roboto", sans-serif;
