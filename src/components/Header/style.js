@@ -4,7 +4,7 @@ import { List, Receipt, SignOut } from "@phosphor-icons/react";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.header`
-  grid-area: "header";
+  grid-area: header;
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.DARK_700};
   height: 11.4rem;

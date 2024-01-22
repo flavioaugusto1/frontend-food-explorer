@@ -3,12 +3,12 @@ import { X, MagnifyingGlass } from "@phosphor-icons/react";
 
 export const Container = styled.aside`
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 1;
 
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 11.4rem auto 7.7rem;
+  grid-template-rows: max-content 1fr max-content;
 
   position: absolute;
   z-index: 1;

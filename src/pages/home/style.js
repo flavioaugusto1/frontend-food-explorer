@@ -2,15 +2,23 @@ import styled from "styled-components";
 import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakpoints";
 
 export const Container = styled.div`
-  height: 100vh;
+height: 100vh;
   position: relative;
   display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  grid-template-areas:
+    "header header header"
+    "content content content"
+    "footer footer footer";
   align-items: center;
   justify-items: center;
   align-content: space-between;
+  overflow-y: scroll;
 
   #content {
     max-width: 48rem;
+    height: 100%;
+    grid-area: content;
     #wrap {
       padding: 2rem;
       #infos {
@@ -152,7 +160,7 @@ export const Container = styled.div`
         .dishes {
           ul {
             display: flex;
-            gap: 1rem;            
+            gap: 1rem;
           }
         }
 
