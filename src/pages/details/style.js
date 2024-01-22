@@ -113,6 +113,18 @@ export const Content = styled.section`
         display: none;
       }
     }
+
+    #logo-product,
+    #backPage {
+      animation-name: slideLeft;
+      animation-duration: 1.5s;
+    }
+
+    #description-product,
+    #buttons {
+      animation-name: slideRight;
+      animation-duration: 1s;
+    }
   }
 
   @media (min-width: ${DEVICE_BREAKPOINTS.LG}) {
@@ -168,6 +180,20 @@ export const Content = styled.section`
           }
         }
       }
+    }
+  }
+
+  @keyframes slideLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-10rem);
+    }
+  }
+
+  @keyframes slideRight {
+    0% {
+      opacity: 0;
+      transform: translateX(10rem);
     }
   }
 `;
