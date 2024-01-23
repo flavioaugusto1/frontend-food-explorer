@@ -11,6 +11,9 @@ Bem-vindo ao projeto de Desafio Final do curso da Rocketseat! Esta plataforma fo
 - Execute primeiro o backend para depois prosseguir com os passos abaixo:
 [Backend do projeto](https://github.com/flavioaugusto1/backend-food-explorer)
 
+- Visualize aqui o projeto:
+[Food Explorer](https://food-expl0rer.netlify.app/)
+
 
 ## Acesso administrador
     
