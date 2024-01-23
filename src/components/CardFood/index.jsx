@@ -15,7 +15,7 @@ import {
 
 import { Button } from "../Button";
 
-export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
+export function CardFood({ data, addItemsOnCart, imgDish, receipts, ...rest }) {
   const { user } = useAuth();
   const [numberItem, setNumberItem] = useState(1);
 
@@ -57,7 +57,7 @@ export function CardFood({ data, addItemsOnCart, imgDish, ...rest }) {
   }
 
   function handleNavigateDetails() {
-    navigate(`/details/${data.id}`);
+    navigate(`/details/${data.id}`, {state: {key: {receipts}}});
   }
 
   function handleNavigateUpdate() {

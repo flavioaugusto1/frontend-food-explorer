@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { api } from "../../services/api";
 import { toastNotify } from "../../services/notifyStatus";
 
@@ -17,9 +17,12 @@ import { Button } from "../../components/Button";
 import { Footer } from "../../components/Footer";
 
 export function Details() {
+  const { state } = useLocation();
+  console.log(state.key.receipts)
+
   const [data, setData] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const [receipt, setReceipt] = useState(0);
+  const [receipt, setReceipt] = useState(state.key.receipts);
 
   const [price, setPrice] = useState(null);
   const [showPrice, setShowPrice] = useState(price);

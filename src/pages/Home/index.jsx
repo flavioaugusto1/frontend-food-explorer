@@ -92,6 +92,7 @@ export function Home() {
                         data={dish}
                         imgDish={`${api.defaults.baseURL}/files/${dish.image}`}
                         addItemsOnCart={handleAddItemOnCart}
+                        receipts={receipt}
                       />
                     </MagicMotion>
                   </SplideSlide>
