@@ -199,7 +199,7 @@ export function New() {
 
           <div id="buttons">
             <Button
-              name="Salvar alterações"
+              name="Salvar prato"
               onClick={() => handleNewDish(logo)}
             />
           </div>
