@@ -96,7 +96,7 @@ export function Home() {
                       />
                     </MagicMotion>
                   </SplideSlide>
-                )
+                ),
             )}
           </Splide>
         </section>
@@ -128,7 +128,7 @@ export function Home() {
                       />
                     </MagicMotion>
                   </SplideSlide>
-                )
+                ),
             )}
           </Splide>
         </section>
@@ -160,7 +160,7 @@ export function Home() {
                       />
                     </MagicMotion>
                   </SplideSlide>
-                )
+                ),
             )}
           </Splide>
         </section>

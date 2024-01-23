@@ -18,7 +18,6 @@ import { Footer } from "../../components/Footer";
 
 export function Details() {
   const { state } = useLocation();
-  console.log(state.key.receipts)
 
   const [data, setData] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
